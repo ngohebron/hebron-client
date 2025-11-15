@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #e5e7eb; /* Tailwind gray-200 */
+}
+
+.bg-customGreen{
+  background-color: #234639;
+}
+
+.border-customGreen{
+  border-color: #234639;
+}
+
+.text-customGreen{
+  color: #234639;
+}
+.button-customGreen{
+  background-color: #234639;
+  color: white;
+}
