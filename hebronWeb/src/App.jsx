@@ -1,12 +1,34 @@
 import React from 'react'
+import { BrowserRouter as Router,Routes,Route } from "react-router-dom"
+import Home from './pages/Home'
+import ReactLenis from 'lenis/react'
+
 
 function App() {
  
 
   return (
-    <>
-      <h1 className='font-bold'>hiiiiii</h1>
-    </>
+    <Router>
+      <ReactLenis
+      root options={
+        {
+          lerp: 0.1,
+          duration: 1.2,
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          smoothTouch: false,
+          touchMultiplier: 2,
+        }}>
+      <div>
+        
+        <Routes>
+          <Route path="/" element={<Home/>} />
+        </Routes>
+      </div>
+      </ReactLenis>
+    </Router>
   )
 }
 
