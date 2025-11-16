@@ -45,10 +45,20 @@ const NavigationBar = () => {
         </div>
        
         <div className="flex space-x-4">
-          <a href="#" className="hover:text-gray-400 text-gray-700 text-sm ">About Us</a>
-          <a href="#" className="hover:text-gray-400 text-gray-700 text-sm">Our Work</a>
-          <a href="#" className="hover:text-gray-400 text-gray-700 text-sm">Get Involved</a>
-          <a href="#" className="hover:text-gray-400 text-gray-700 text-sm">Gallery</a>
+          <a href="#!" 
+          onClick={(e) => e.preventDefault()}
+          className="hover:text-gray-400 text-gray-700 text-sm"
+          >About Us</a>
+          <a href="#!" 
+          onClick={(e) => e.preventDefault()}
+          className="hover:text-gray-400 text-gray-700 text-sm">Our Work</a>
+          <a href="#!" 
+          onClick={(e) => e.preventDefault()}
+          className="hover:text-gray-400 text-gray-700 text-sm">Get Involved</a>
+          <a href="#!" 
+          onClick={(e) => e.preventDefault()}
+
+          className="hover:text-gray-400 text-gray-700 text-sm">Gallery</a>
         </div>
       </div>
       <div className="flex items-center space-x-4">
@@ -63,7 +73,7 @@ const NavigationBar = () => {
     
     {isMobile && (
         <>
-          <nav className=" shadow-xl rounded-2xl mt-2 px-4 mx-2 py-3 bg-white flex items-center justify-between mb-2">
+          <nav className="  shadow-xl rounded-2xl mt-2 px-4 mx-2 py-3 bg-white flex items-center justify-between mb-2">
 
             {/* Logo */}
             <div className="flex items-center gap-2">
@@ -86,10 +96,10 @@ const NavigationBar = () => {
           {/* Expand Menu */}
           {menuOpen && (
             <div className="bg-white mt-1 rounded-2xl mx-2 shadow-sm flex flex-col items-center gap-4 py-4 text-sm mb-2">
-              <a href="#">About Us</a>
-              <a href="#">Our Work</a>
-              <a href="#">Get Involved</a>
-              <a href="#">Gallery</a>
+              <a href="#!">About Us</a>
+              <a href="#!">Our Work</a>
+              <a href="#!">Get Involved</a>
+              <a href="#!">Gallery</a>
 
               <div className="flex flex-col items-center gap-3 mt-2">
                 <CiUser size={25} />
