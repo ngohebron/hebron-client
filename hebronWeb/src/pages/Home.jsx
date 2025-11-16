@@ -191,52 +191,6 @@ const Home = () => {
         </section>
 
         {/* Success Story Section */}
-        
-
-        
-        {/* <section className="w-full flex justify-center items-center py-10 px-4">
-  <div className="flex gap-4 w-full max-w-6xl justify-center h-auto md:h-140 overflow-x-auto md:overflow-visible">
-    {stories.map((item, index) => (
-      <div
-        key={item.id}
-        onMouseEnter={() => setActive(index)}
-        onMouseLeave={() => setActive(0)}
-        className={`relative bg-emerald-900 text-white rounded-2xl overflow-hidden cursor-pointer gap-10 transition-all duration-500 ease-in-out shadow-xl 
-          ${active === index ? "w-full md:w-[60%] min-h-[400px]" : "w-[80px] min-h-[200px] md:min-h-0"}`}
-      >
-        
-        <div
-          className={`absolute inset-0 flex justify-center items-center text-lg font-medium whitespace-nowrap transition-opacity duration-300
-            ${active === index ? "opacity-0" : "opacity-100 -rotate-90"}`}
-        >
-          {item.title}
-        </div>
-
-        
-        <div
-          className={`w-full h-full p-4 md:p-5 transition-opacity duration-500 flex flex-col
-            ${active === index ? "opacity-100" : "opacity-0"}`}
-        >
-          <img
-            src={item.img}
-            alt={item.title}
-            className="w-full h-32 md:h-48 object-cover rounded-lg mb-3 md:mb-4"
-          />
-
-          <h2 className="text-lg md:text-xl font-semibold mb-2">{item.title}</h2>
-          <p className="text-xs md:text-sm opacity-90 mb-3 overflow-y-auto max-h-[200px]">
-            {item.desc}
-          </p>
-
-          <button className="text-emerald-900 bg-white font-medium px-4 py-1 rounded-lg hover:bg-emerald-200 transition text-sm md:text-base w-fit">
-            Read More
-          </button>
-        </div>
-      </div>
-    ))}
-  </div>
-</section> */}
-
 <section className="w-full flex justify-center items-center py-10 px-4">
   <div className="flex gap-4 w-full max-w-6xl justify-center h-auto overflow-x-auto md:overflow-visible">
     {stories.map((item, index) => (
