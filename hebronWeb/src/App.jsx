@@ -13,7 +13,7 @@ function App() {
       root options={
         {
           lerp: 0.1,
-          duration: 1.2,
+          duration: 1,
           orientation: 'vertical',
           gestureOrientation: 'vertical',
           smoothWheel: true,
@@ -21,12 +21,11 @@ function App() {
           smoothTouch: false,
           touchMultiplier: 2,
         }}>
-      <div>
+      
         
         <Routes>
           <Route path="/" element={<Home/>} />
         </Routes>
-      </div>
       </ReactLenis>
     </Router>
   )
