@@ -1,5 +1,14 @@
 // src/constants/data.js
 
+export const navLinks = [
+  { label: "Home", path: "/" },
+  { label: "About Us", path: "/aboutus" },
+  { label: "Our Work", path: "/ourwork" },
+  { label: "Get Involved", path: "/getinvolved" },
+  { label: "Gallery", path: "/gallery" },
+];
+
+
 export const faqs = [
   {
     q: "Is your NGO registered and recognized by the government?",
