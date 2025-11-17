@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
-
+import { navLinks } from '../constants/data';
 import { CiUser } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom';
 
 
 const NavigationBar = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+
+   const handleNavigation = (path) => {
+    navigate(path);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,7 +24,6 @@ const NavigationBar = () => {
         setIsDesktop(true);
       }
     };
-
     handleResize(); // call once on load
     window.addEventListener("resize", handleResize);
 
@@ -39,26 +44,25 @@ const NavigationBar = () => {
             className='py-1'
             />
             <div className="flex flex-col text-center leading-[0.7]">
-  <span className="text-md font-semibold">Hebron</span>
-  <span className="text-sm font-semibold">Foundation</span>
-</div>
+          <span className="text-md font-semibold">Hebron</span>
+          <span className="text-sm font-semibold">Foundation</span>
+            </div>
         </div>
        
         <div className="flex space-x-4">
-          <a href="#!" 
-          onClick={(e) => e.preventDefault()}
-          className="hover:text-gray-400 text-gray-700 text-sm"
-          >About Us</a>
-          <a href="#!" 
-          onClick={(e) => e.preventDefault()}
-          className="hover:text-gray-400 text-gray-700 text-sm">Our Work</a>
-          <a href="#!" 
-          onClick={(e) => e.preventDefault()}
-          className="hover:text-gray-400 text-gray-700 text-sm">Get Involved</a>
-          <a href="#!" 
-          onClick={(e) => e.preventDefault()}
+         
+           {navLinks.map((item, index) => (
+        <p
+          key={index}
+          onClick={() => handleNavigation(item.path)}
+          className="hover:text-gray-400 text-gray-700 text-sm cursor-pointer"
+        >
+          {item.label}
+        </p>
+      ))}
 
-          className="hover:text-gray-400 text-gray-700 text-sm">Gallery</a>
+
+         
         </div>
       </div>
       <div className="flex items-center space-x-4">
