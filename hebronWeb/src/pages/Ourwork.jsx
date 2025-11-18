@@ -90,7 +90,6 @@ function Ourwork() {
       title: "Women Empowerment",
       desc: "Supporting women through education, microfinance, and leadership programs.",
     },
-    
   ];
   return (
     <MainLayout className=" w-full">
@@ -149,31 +148,47 @@ function Ourwork() {
             <p className="mb-6 text-gray-200">
               Get in touch with us for any enquiries, and questions
             </p>
-             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {commitment.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-2xl shadow-md overflow-hidden"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-48 object-cover"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {commitment.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-2xl shadow-md overflow-hidden"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-48 object-cover"
+                  />
 
-                <div className="p-4">
-                  <h3 className="text-[#234639] font-manrope font-semibold">
-                    {item.title}
-                  </h3>
-                  <h2 className="text-sm text-[#43846D] mt-2">Our Goal</h2>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <div className="p-4">
+                    <h3 className="text-[#234639] font-manrope font-semibold">
+                      {item.title}
+                    </h3>
+                    <h2 className="text-sm text-[#43846D] mt-2">Our Goal</h2>
+                    <p className="text-sm text-gray-600">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      <div className="my-16 flex justify-center items-center gap-4">
+        <button
+          onClick={(e) => e.preventDefault()}
+          className="bg-[#234639] text-sm text-white hover:bg-emerald-900 hover:text-gray-200 transition px-4 py-2 w-fit rounded-3xl font-medium shadow-xl cursor-pointer"
+        >
+          Support the causes
+        </button>
+
+        <span
+          onClick={(e) => e.preventDefault()}
+          className="text-[#234639] font-medium underline underline-offset-4 cursor-pointer hover:text-emerald-900 transition"
+        >
+          Get Involved
+        </span>
+      </div>
 
       <footer className="bg-gray-800 text-white py-8 px-6">
         <div className="max-w-6xl mx-auto">
