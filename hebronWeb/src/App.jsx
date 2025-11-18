@@ -3,6 +3,7 @@ import { BrowserRouter as Router,Routes,Route } from "react-router-dom"
 import Home from './pages/Home'
 import ReactLenis from 'lenis/react'
 import AboutUs from './pages/AboutUs'
+import Ourwork from './pages/Ourwork'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
            <Route path="/aboutus" element={<AboutUs/>} />
+            <Route path="/ourwork" element={<Ourwork/>} />
         </Routes>
       {/* </ReactLenis> */}
     </Router>
