@@ -174,6 +174,7 @@ function Ourwork() {
         </div>
       </section>
 
+      {/* Support and Involved Buttons */}
       <div className="my-16 flex justify-center items-center gap-4">
         <button
           onClick={(e) => e.preventDefault()}
@@ -189,6 +190,37 @@ function Ourwork() {
           Get Involved
         </span>
       </div>
+
+      <section className="py-16 px-6 bgCustomBlack rounded-2xl ">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl text-gray-100  font-semibold mb-6">
+            CSR Partnerships
+          </h2>
+
+          <p className="text-xl font-light text-white/80">
+            At Hebron Foundation, we believe meaningful change begins with
+            strong partnerships. <span className="font-bold text-white">As a CSR-registered and 80G-certified NGO</span>, we
+            collaborate with companies under the Companies Act, 2013, to create
+            measurable community impact.
+          </p>
+
+          <p className="text-xl font-light text-white/80 mt-6">
+            Our initiatives span key CSR focus areas — Education, Health &
+            Nutrition, Livelihood Development, and Child Welfare — with
+            end-to-end execution and transparent reporting that turn every
+            contribution into real, lasting change.
+          </p>
+
+          <span
+            onClick={(e) => e.preventDefault()}
+            className="text-white font-medium underline underline-offset-4 cursor-pointer hover:text-emerald-900 transition"
+          >
+            READ MORE
+          </span>
+          <h1 className="text-2xl text-[#7AA797] font-light mt-10">Write to us for CSR support</h1>
+          <p className="text-white">Reach us at- <span className="underline underline-offset-4">csrsupport@hebronfoundation.com</span></p>
+        </div>
+      </section>
 
       <footer className="bg-gray-800 text-white py-8 px-6">
         <div className="max-w-6xl mx-auto">
