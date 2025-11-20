@@ -14,6 +14,7 @@ function Campaign_page() {
         </div>
       </section>
 
+      {/* Quetion 1*/}
       <div className="flex items-center justify-center px-6">
         <div className="max-w-2xl">
           <h1 className="text-xl mb-4 leading-relaxed text-[#1B3F32]">
@@ -27,7 +28,7 @@ function Campaign_page() {
           </p>
         </div>
       </div>
-
+      {/* Why Section*/}
       <div className="flex items-end justify-center py-12 px-6 gap-4">
         <div className="w-100 h-80">
           <h1 className="text-xl text-[#1B3F32] mb-6">Why ?</h1>
@@ -56,6 +57,16 @@ function Campaign_page() {
             className="w-100 h-80 object-cover rounded-xl"
           />
         </div>
+      </div>
+
+      <div className="flex justify-center py-12 px-30 gap-4">
+        <p className="text-[#1B3F32] mb-4">
+          We provide non-perishable food packages containing essential staples
+          such as rice, lentils, wheat, vegetables, and fruit to families and
+          individuals in need. Our food distribution efforts are designed to not
+          only meet immediate hunger needs but also contribute to long-term
+          health and community well-being
+        </p>
       </div>
     </MainLayout>
   );
