@@ -1,7 +1,26 @@
-import React from "react";
+import React,  { useRef, useState } from "react";
 import MainLayout from "../layout/MainLayout";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Footer from "../component/Footer";
+import { images,teamMembers } from "../constants/data";
+
 
 const AboutUs = () => {
+
+  const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState("next"); 
+
+  const next = () => {
+    setDirection("next");
+    setActive((prev) => (prev + 1) % images.length);
+  };
+
+  const prev = () => {
+    setDirection("prev");
+    setActive((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+
   return (
     <MainLayout className=" w-full">
       <section className="py-16  px-10">
@@ -69,30 +88,6 @@ const AboutUs = () => {
       </section>
 
       {/* Organization History */}
-      {/* <section className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Holstein Foundation: a nonprofit organization that helps create
-            social integration and innovation in 2010. The Organization's
-            National Daycare Forum
-          </h2>
-
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <p className="text-lg mb-6">
-              Since 2014, our alumni have to address social challenges, global
-              fundraising and cross-platform development by providing essential
-              tools such as delivery of fitness in need.
-            </p>
-            <p className="text-lg">
-              The total annual commitment taking prompt events, and revenue
-              combination for long-term growth.
-            </p>
-          </div>
-        </div>
-        <div>
-            <img src="/aboutus/child.jpg" alt="" />
-        </div>
-      </section> */}
       <section className="py-8 px-6 bg-emerald-800 rounded-xl">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 text-gray-100">
           {/* LEFT SIDE TEXT */}
@@ -160,96 +155,166 @@ const AboutUs = () => {
 </div>
 
         </div>
+
       </section>
+
+      {/* Image section */}
+
+        {/* <section className="w-full flex flex-col items-center py-10">
+
+      <div className="relative w-full max-w-5xl flex items-center justify-center">
+
+       
+        <img
+          src={images[(active - 1 + images.length) % images.length]}
+          alt=""
+          className="w-[20%] h-[250px] object-cover rounded-3xl opacity-60 scale-90 hidden md:block"
+        />
+
+        
+        <img
+          src={images[active]}
+          alt=""
+          className="w-[65%] h-[350px] object-cover rounded-3xl shadow-xl z-10"
+        />
+
+     
+        <img
+          src={images[(active + 1) % images.length]}
+          alt=""
+          className="w-[20%] h-[250px] object-cover rounded-3xl opacity-60 scale-90 hidden md:block"
+        />
+
+       
+        <button
+          onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 p-3 rounded-full shadow hover:bg-white"
+        >
+          <FaChevronLeft className="text-gray-700" size={18} />
+        </button>
+
+    
+        <button
+          onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 p-3 rounded-full shadow hover:bg-white"
+        >
+          <FaChevronRight className="text-gray-700" size={18} />
+        </button>
+      </div>
+
+      
+      <div className="flex gap-2 mt-4">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            className={`w-3 h-3 rounded-full ${
+              i === active ? "bg-purple-600" : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
+    </section> */}
+
+    <section className="w-full flex flex-col items-center py-10">
+
+  <div className="relative w-full max-w-5xl flex items-center justify-center">
+
+    {/* LEFT IMAGE */}
+    <img
+      src={images[(active - 1 + images.length) % images.length]}
+      alt=""
+      className="w-[20%] h-[250px] object-cover rounded-3xl opacity-60 scale-90 hidden md:block 
+                 smooth-slide"
+    />
+
+    {/* MAIN IMAGE */}
+    <img
+      key={active}
+      src={images[active]}
+      alt=""
+      className="w-[65%] h-[350px] object-cover rounded-3xl shadow-xl z-10 
+                 smooth-slide-main"
+    />
+
+    {/* RIGHT IMAGE */}
+    <img
+      src={images[(active + 1) % images.length]}
+      alt=""
+      className="w-[20%] h-[250px] object-cover rounded-3xl opacity-60 scale-90 hidden md:block 
+                 smooth-slide"
+    />
+
+    {/* LEFT BUTTON */}
+    <button
+      onClick={prev}
+      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 p-3 rounded-full shadow hover:bg-white"
+    >
+      <FaChevronLeft className="text-gray-700" size={18} />
+    </button>
+
+    {/* RIGHT BUTTON */}
+    <button
+      onClick={next}
+      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 p-3 rounded-full shadow hover:bg-white"
+    >
+      <FaChevronRight className="text-gray-700" size={18} />
+    </button>
+  </div>
+
+  {/* DOTS */}
+  <div className="flex gap-2 mt-4">
+    {images.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setActive(i)}
+        className={`w-3 h-3 rounded-full ${
+          i === active ? "bg-emerald-800" : "bg-gray-400"
+        }`}
+      />
+    ))}
+  </div>
+</section>
+
 
       {/* Team Section */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">Our Team</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              "Mr Benjamin Kane",
-              "Mrs Benjamin Kane",
-              "Mrs Timothy Kane",
-              "Mrs Josephson Kane",
-              "Ms Stephen Kane",
-              "Ms Matthew Kane",
-              "Ms James Kane",
-              "Ms Jonathan Kane",
-              "Ms Jennifer Kane",
-              "Ms Susan Kane",
-            ].map((member, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-4 rounded-lg text-center"
-              >
-                <div className="w-16 h-16 bg-blue-200 rounded-full mx-auto mb-3 flex items-center justify-center">
-                  <span className="text-blue-600 font-semibold">
-                    {member.split(" ")[1].charAt(0)}
-                  </span>
-                </div>
-                <p className="font-medium">{member}</p>
-              </div>
-            ))}
-          </div>
+         
+
+         
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  {teamMembers.map((member, index) => (
+    <div
+      key={index}
+      className="rounded-2xl overflow-hidden w-55  h-fit shadow-lg"
+    >
+      <div className="relative w-full h-60 ">
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-full object-cover rounded-2xl "
+        />
+
+        {/* GRADIENT OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1c7755a6] to-[#136341]"></div>
+      </div>
+
+      <div className="p-2 w-full text-center bg-[#136341] text-white">
+        <p className="text-lg font-semibold">{member.name}</p>
+        <p className="text-sm opacity-80">{member.role}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
         </div>
       </section>
 
       {/* Contact Information */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Helproom Foundation</h2>
-              <p className="font-semibold mb-2">PARTYBLOGY</p>
-              <p className="mb-4">
-                John B.E. (Lincolnshire), New York
-                <br />
-                Current Business School
-              </p>
-              <p className="font-semibold">Phone + 8005 5468/8889</p>
-            </div>
-
-            <div className="text-center md:text-right">
-              <h3 className="text-xl font-bold mb-4">
-                Trust that Walks Beside You
-              </h3>
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition mb-8">
-                Contact Us here
-              </button>
-
-              <div className="space-y-2">
-                <p className="font-semibold">Contact us at TATTERNS2</p>
-                <p>Email: info@helproomfoundation.org.au</p>
-                <p>Address: www.tattyhome.com</p>
-                <p>Website: www.tattyhome.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-gray-800 text-white py-8 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="mb-4 md:mb-0">
-              © 2023 Holstein Foundation, All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="hover:text-blue-300">
-                Tourist Services
-              </a>
-              <a href="#" className="hover:text-blue-300">
-                Primary Policy
-              </a>
-              <a href="#" className="hover:text-blue-300">
-                Legal Compliance
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </MainLayout>
   );
 };

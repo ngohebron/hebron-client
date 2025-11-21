@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import ReactLenis from 'lenis/react'
 import AboutUs from './pages/AboutUs'
 import Ourwork from './pages/Ourwork'
+import Campaign_page from './pages/Campaign_page'
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 
   return (
     <Router>
-      {/* <ReactLenis
+      <ReactLenis
       root options={
         {
           lerp: 0.1,
@@ -22,15 +23,16 @@ function App() {
           wheelMultiplier: 1,
           smoothTouch: false,
           touchMultiplier: 2,
-        }}> */}
+        }}>
       
         
         <Routes>
           <Route path="/" element={<Home/>} />
            <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/ourwork" element={<Ourwork/>} />
+            <Route path="/campaign" element={<Campaign_page/>} />
         </Routes>
-      {/* </ReactLenis> */}
+      </ReactLenis>
     </Router>
   )
 }
