@@ -100,10 +100,15 @@ const NavigationBar = () => {
           {/* Expand Menu */}
           {menuOpen && (
             <div className="bg-white mt-1 rounded-2xl mx-2 shadow-sm flex flex-col items-center gap-4 py-4 text-sm mb-2">
-              <a href="#!">About Us</a>
-              <a href="#!">Our Work</a>
-              <a href="#!">Get Involved</a>
-              <a href="#!">Gallery</a>
+                {navLinks.map((item, index) => (
+        <p
+          key={index}
+          onClick={() => handleNavigation(item.path)}
+          className="hover:text-gray-400 text-gray-700 text-sm cursor-pointer"
+        >
+          {item.label}
+        </p>
+      ))}
 
               <div className="flex flex-col items-center gap-3 mt-2">
                 <CiUser size={25} />

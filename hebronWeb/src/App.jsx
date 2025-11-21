@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Router>
-      {/* <ReactLenis
+      <ReactLenis
       root options={
         {
           lerp: 0.1,
@@ -23,7 +23,7 @@ function App() {
           wheelMultiplier: 1,
           smoothTouch: false,
           touchMultiplier: 2,
-        }}> */}
+        }}>
       
         
         <Routes>
@@ -32,7 +32,7 @@ function App() {
             <Route path="/ourwork" element={<Ourwork/>} />
             <Route path="/campaign" element={<Campaign_page/>} />
         </Routes>
-      {/* </ReactLenis> */}
+      </ReactLenis>
     </Router>
   )
 }
