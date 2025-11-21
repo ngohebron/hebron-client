@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import ReactLenis from 'lenis/react'
 import AboutUs from './pages/AboutUs'
 import Ourwork from './pages/Ourwork'
+import DonationHub from './pages/donationHub'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home/>} />
            <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/ourwork" element={<Ourwork/>} />
+            <Route path="/donationhub" element={<DonationHub/>} />
         </Routes>
       {/* </ReactLenis> */}
     </Router>

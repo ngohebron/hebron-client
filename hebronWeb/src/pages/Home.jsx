@@ -30,7 +30,7 @@ const Home = () => {
     overflow-hidden"
           style={{ backgroundImage: "url('/home/children.jpg')" }}
         >
-          <div className=" relative z-10 max-w-6xl mx-auto">
+          <div className="relative z-10 max-w-6xl mx-auto">
             <div className="flex flex-col gap-12">
               <div className="md:w-1/2 text-left">
                 <h1 className="text-3xl text-white/80 font-semibold mb-4">
