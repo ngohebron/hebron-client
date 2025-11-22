@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
+@import './styles/font.css';
 
 
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 body {
@@ -33,6 +34,22 @@ body {
 
 .bgCustomBlack2{
   background-color: #3A3A3A;
+}
+
+
+@keyframes fadeSlideMain {
+  0% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.smooth-slide-main {
+  animation: fadeSlideMain 0.5s ease-in-out;
 }
 
 
