@@ -55,6 +55,33 @@ const causes = [
   },
 ];
 
+const items = [
+  {
+    icon: "/donationHub/temoicon.jpg",
+    title: "Feeds the needy",
+    description:
+      "Every ₹30 serves a warm, wholesome meal and reminds someone they are not forgotten.",
+  },
+  {
+    icon: "/donationHub/temoicon.jpg",
+    title: "Supports education",
+    description:
+      "Books, bags, and dreams — your gift helps a child stay in school and keep learning.",
+  },
+  {
+    icon: "/donationHub/temoicon.jpg",
+    title: "Warmth to the Poor",
+    description:
+      "Bring comfort and confidence through clean, seasonal clothing to those in need.",
+  },
+  {
+    icon: "/donationHub/temoicon.jpg",
+    title: "Child Development",
+    description:
+      "Child Development Bring comfort & confidence through clean, seasonal clothing to those in need.",
+  },
+];
+
 export default function DonationHub() {
   const [activeTab, setActiveTab] = useState("tab1");
   return (
@@ -174,7 +201,7 @@ export default function DonationHub() {
                 </div>
               </div>
             </div>
-
+            {/* Cards Section */}
             <div className="flex justify-center mt-8">
               <div className="grid grid-cols-2 gap-10 p-6 max-w-4xl">
                 {causes.map((item, index) => {
@@ -182,14 +209,16 @@ export default function DonationHub() {
                   return (
                     <div
                       key={index}
-                      className="bg-[linear-gradient(90deg,#43846D_0%,#234639_50%,#43846D_100%)] rounded-2xl shadow-lg flex flex-col w-80 h-80 justify-between p-6"
+                      className="bg-[linear-gradient(90deg,#43846D_0%,#234639_50%,#43846D_100%)] rounded-2xl shadow-lg flex flex-col w-80 h-60 justify-between p-6"
                     >
                       <div className="bg-white w-full p-3 rounded-lg shadow">
                         <h2 className="text-sm font-semibold text-gray-800 mb-2">
                           {item.title}
                         </h2>
 
-                        <p className="text-xs text-gray-600 mb-1">Fund Raised</p>
+                        <p className="text-xs text-gray-600 mb-1">
+                          Fund Raised
+                        </p>
 
                         <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
                           <div
@@ -204,12 +233,51 @@ export default function DonationHub() {
                         </div>
                       </div>
 
-                      <button className="mt-2 bg-white text-customGreen font-semibold py-1 px-3 text-xs rounded-full shadow hover:bg-gray-100 transition">
+                      <button className="bg-white text-customGreen font-semibold py-2 px-3 text-xs rounded-full shadow hover:bg-gray-100 transition">
                         Support
                       </button>
                     </div>
                   );
                 })}
+              </div>
+            </div>
+
+            <div className="w-full mt-8">
+              {/* Centered Title */}
+              <h1
+                className="font-nohemi font-medium text-[34px] leading-[100%] tracking-[1%] 
+                 text-center capitalize"
+              >
+                What your donation supports
+              </h1>
+
+              {/* Cards Grid */}
+              <div className="mt-10 px-6 flex justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+                  {items.map((item, index) => (
+                    <div
+                      key={index}
+                      className={`
+            p-6 flex flex-col items-center text-center
+            ${index === 3 ? "md:col-start-2" : ""}
+          `}
+                    >
+                      <img
+                        src={item.icon}
+                        alt={item.title}
+                        className="w-16 h-16 mb-4"
+                      />
+
+                      <h3 className="text-lg font-semibold mb-2">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-gray-600 text-sm">
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
