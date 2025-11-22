@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MainLayout from "../layout/MainLayout";
+import Footer from "../component/Footer";
 
 const campaignsData = [
   {
@@ -82,8 +83,62 @@ const items = [
   },
 ];
 
+const faqs = [
+  {
+    question: "How can I make a donation to Hebron Foundation?",
+    answer:
+      "You can donate securely through our website using UPI, debit/credit cards, or net banking. Every contribution, big or small, makes a difference.",
+    open: false,
+  },
+  {
+    question: "Will I get a receipt for my donation?",
+    answer:
+      "Yes. You'll receive an instant email receipt after your payment, confirming your donation.",
+    open: false,
+  },
+  {
+    question: "Is my donation tax-deductible?",
+    answer: "",
+    open: false,
+  },
+  {
+    question: "Can I donate items like clothes or books instead of money?",
+    answer: "",
+    open: false,
+  },
+  {
+    question: "How safe is it to donate online?",
+    answer:
+      "Your safety and privacy matter to us. All transactions are processed through secure, encrypted payment gateways.",
+    open: false,
+  },
+  {
+    question: "Can I know how my donation is used?",
+    answer: "",
+    open: false,
+  },
+  {
+    question: "Can I make a monthly or recurring donation?",
+    answer: "",
+    open: false,
+  },
+];
+
 export default function DonationHub() {
   const [activeTab, setActiveTab] = useState("tab1");
+  const [openIds, setOpenIds] = useState(
+    faqs.reduce((acc, faq, idx) => {
+      if (faq.open) acc.push(idx);
+      return acc;
+    }, [])
+  );
+
+  const toggleOpen = (idx) => {
+    setOpenIds((prev) =>
+      prev.includes(idx) ? prev.filter((id) => id !== idx) : [...prev, idx]
+    );
+  };
+
   return (
     <MainLayout className=" w-full">
       <section
@@ -283,6 +338,86 @@ export default function DonationHub() {
           </div>
         </div>
       </section>
+   <section className="relative -mt-20 px-6 pb-16">
+  <div className="max-w-6xl mx-auto bg-[#43846D] rounded-2xl shadow-lg p-8 md:p-12">
+
+    {/* Center section wrapper */}
+    <div className="w-full flex justify-center">
+      <div className="max-w-xl w-full">
+
+        {/* FAQ Title */}
+        <h1 className="text-white text-3xl font-bold mb-4">
+          Frequently Asked Questions
+        </h1>
+
+        {/* FAQ Box */}
+        <div className="bg-[#7AA79733] bg-opacity-70 rounded-xl p-8 shadow-lg">
+          {faqs.map((faq, idx) => (
+            <div key={idx} className="mb-6">
+              <button
+                className="w-full text-left text-lg text-white"
+                onClick={() => toggleOpen(idx)}
+              >
+                {faq.question}
+                <span className="float-right">
+                  {faq.answer ? (openIds.includes(idx) ? "−" : "+") : "+"}
+                </span>
+              </button>
+
+              {/* Smooth Animation */}
+              <div
+                className={`transition-all duration-300 overflow-hidden ${
+                  openIds.includes(idx)
+                    ? "max-h-40 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <p className="mt-2 text-white text-[16px] pl-2">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+
+    {/* Contact Box - aligned with FAQ box */}
+    <div className="w-full flex justify-center mt-6">
+      <div className="max-w-xl w-full">
+        <div
+          className="
+            w-full
+            rounded-[9px]
+            border-2
+            opacity-100
+            p-6
+            bg-gradient-to-r from-[#43846D] via-[#234639] to-[#43846D]
+          "
+        >
+          <h1 className="text-white text-sm mb-2">
+            For any further queries reach out to
+          </h1>
+
+          <p className="text-white text-sm">
+            Email : info@hebronfoundation.com
+          </p>
+
+          <p className="text-white text-sm mt-1">
+            Contact: 8793235622
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div>
+    <Footer/>
+</div>
+
     </MainLayout>
   );
 }
