@@ -151,7 +151,7 @@ export default function DonationHub() {
     overflow-hidden"
         style={{ backgroundImage: "url('/home/children.jpg')" }}
       >
-        <div className="md:w-1/2 text-left ml-10">
+        <div className="md:w-1/2 text-left ml-10 mb-20">
           <h1 className="text-3xl text-white/80 font-semibold mb-4 mt-100">
             Your Kindness can bring a{" "}
           </h1>
@@ -414,7 +414,7 @@ export default function DonationHub() {
   </div>
 </section>
 
-<div>
+<div className="py-16 px-6 bg-[#F9F9EE] rounded-4xl mt-16">
     <Footer/>
 </div>
 
