@@ -189,7 +189,7 @@ function Ourwork() {
         </button>
 
         <span
-          onClick={(e) => e.preventDefault()}
+          onClick={(e) => navigate("/donationhub")}
           className="text-[#234639] font-medium underline underline-offset-4 cursor-pointer hover:text-emerald-900 transition"
         >
           Get Involved

@@ -5,6 +5,7 @@ import ReactLenis from 'lenis/react'
 import AboutUs from './pages/AboutUs'
 import Ourwork from './pages/Ourwork'
 import Campaign_page from './pages/Campaign_page'
+import DonationHub from './pages/donationHub'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
            <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/ourwork" element={<Ourwork/>} />
             <Route path="/campaign" element={<Campaign_page/>} />
+            <Route path="/donationhub" element={<DonationHub/>} />
         </Routes>
       </ReactLenis>
     </Router>
