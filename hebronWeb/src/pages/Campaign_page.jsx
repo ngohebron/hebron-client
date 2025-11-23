@@ -1,10 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
 import SwipeCards from "../component/SwipeCards";
+import { useLocation } from "react-router-dom";
 
 function Campaign_page() {
+
+  const location = useLocation();
+
+  const item = location.state?.data;
+  const [campaignData, setCampaignData] = useState(item || null);
+
+ 
+  useEffect(() => {  console.log("Campaign Data:", item);   },[]);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const [counters, setCounters] = useState({
     meals: 0,
     kits: 0,
@@ -24,6 +34,7 @@ function Campaign_page() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.3 }
@@ -37,7 +48,9 @@ function Campaign_page() {
   }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || hasAnimated) return;
+
+    setHasAnimated(true);
 
     const duration = 2000;
     const steps = 60;
@@ -66,7 +79,7 @@ function Campaign_page() {
     animateCounter(0, targetValues.districts, (val) =>
       setCounters((prev) => ({ ...prev, districts: val }))
     );
-  }, [isVisible]);
+  }, [isVisible,hasAnimated]);
 
   const formatNumber = (num, type) => {
     if (type === "meals") {
@@ -96,13 +109,10 @@ function Campaign_page() {
           <div className="flex flex-col  gap-12">
             <div className="md:w-1/2">
               <h2 className="text-3xl  text-customGreen mb-4">
-                What is <span className="font-semibold">Meal of Hope ?</span>{" "}
+                What is <span className="font-semibold">{campaignData?.title} ?</span>{" "}
               </h2>
               <p className="text-lg  text-customGreen">
-                We{" "}
-                <span className="font-semibold">distribute cooked meals</span>{" "}
-                at community centers, shelters, and schools to ensure that
-                individuals have access to hot, nutritious food.
+                {campaignData?.description}
               </p>
             </div>
           </div>
@@ -114,25 +124,21 @@ function Campaign_page() {
           <h1 className="text-xl text-[#1B3F32] mb-6">Why ?</h1>
 
           <p className="text-[#1B3F32] mb-4">
-            Millions across India still go to bed hungry every night.
-            Malnutrition and lack of access to food not only affect physical
-            health but also rob people of dignity and hope.
+            {campaignData?.why_section?.para_01}
           </p>
 
           <p className="text-[#1B3F32] mb-4">
-            At Hebron Foundation, we believe that a single meal can restore
-            faith, renew energy, and reignite the will to move forward.
+            {campaignData?.why_section?.para_02}
           </p>
 
           <p className="text-[#1B3F32]">
-            Our Goal: To fight hunger, promote health, and bring dignity through
-            every meal shared.
+            Our Goal: {campaignData?.why_section?.our_goal}
           </p>
         </div>
 
         <div>
           <img
-            src="/ourwork/image1.jpg"
+            src={campaignData?.why_section?.why_section_image}
             alt="image1"
             className="w-100 h-80 object-cover rounded-xl"
           />
@@ -144,11 +150,7 @@ function Campaign_page() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col  gap-12">
             <p className="text-lg   text-customGreen">
-              We provide non-perishable food packages containing essential
-              staples such as rice, lentils, wheat, vegetables, and fruit to
-              families and individuals in need. Our food distribution efforts
-              are designed to not only meet immediate hunger needs but also
-              contribute to long-term health and community well-being
+                {campaignData?.bottom_description}
             </p>
             <button className="mt-5 border-emerald-900 w-fit border-2 p-1 px-2 rounded-2xl text-emerald-900 font-medium hover:cursor-pointer hover:text-emerald-700">
               Know how you can contribute
