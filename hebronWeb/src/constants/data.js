@@ -140,19 +140,19 @@ export const campaigns_data = [
     bottom_image: "/ourwork/image1.jpg",
     scrolleble_section: [
       {
-        image_url: "/ourwork/image1.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Child Growth",
         description: "Children learning with joy and curiosity.",
         author: "Rahul"
       },
       {
-        image_url: "/ourwork/image2.jpg",
+        image: "/ourwork/image2.jpg",
         title: "New School",
         description: "We built a new school building in the village.",
         author: "Meera"
       },
       {
-        image_url: "/ourwork/image1.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Volunteer Support",
         description: "Volunteers helping children improve reading skills.",
         author: "Karan"
@@ -186,19 +186,19 @@ export const campaigns_data = [
     bottom_image: "/ourwork/image2.jpg",
     scrolleble_section: [
       {
-        image_url: "/ourwork/image2.jpg",
+        image: "/ourwork/image2.jpg",
         title: "Meal Drive",
         description: "Huge community support during meal distribution.",
         author: "Priya"
       },
       {
-        image_url: "/ourwork/image2.jpg",
+        image: "/ourwork/image2.jpg",
         title: "Kitchen Prep",
         description: "Volunteers preparing fresh meals daily.",
         author: "Ramesh"
       },
       {
-        image_url: "/ourwork/image2.jpg",
+        image: "/ourwork/image2.jpg",
         title: "Smiles",
         description: "Children smiling after receiving warm meals.",
         author: "Sneha"
@@ -238,13 +238,13 @@ export const campaigns_data = [
         author: "Alka"
       },
       {
-        image_url: "/ourwork/image1.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Handmade Products",
         description: "Women showcasing products they crafted.",
         author: "Pooja"
       },
       {
-        image_url: "/ourwork/image1.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Community Strength",
         description: "Women supporting each other to grow.",
         author: "Nisha"
@@ -278,19 +278,19 @@ export const campaigns_data = [
     bottom_image: "/ourwork/image1.jpg",
     scrolleble_section: [
       {
-        image_url: "scroll41.jpg",
+        image: "scroll41.jpg",
         title: "Blood Camp",
         description: "Hundreds participated in our blood donation event.",
         author: "Ravi"
       },
       {
-        image_url: "scroll42.jpg",
+        image: "scroll42.jpg",
         title: "Free Checkup",
         description: "Doctors conducting free medical checkups.",
         author: "Dr. Shalini"
       },
       {
-        image_url: "scroll43.jpg",
+        image: "scroll43.jpg",
         title: "Medicine Distribution",
         description: "People receiving free medicines.",
         author: "Gopal"

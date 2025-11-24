@@ -226,9 +226,9 @@ function Campaign_page() {
       </section>
 
       <section className="flex items-center justify-center bg-customGreen py-10">
-          <SwipeCards/>
+          <SwipeCards data={campaignData?.scrolleble_section} />
       </section>
-
+        
       <section className="bg-black/80 my-5 pt-10  text-gray-300 rounded-2xl">
         <div className="w-3/4 mx-auto">
           <h1 className="font-semibold text-xl mb-2">CSR Partnerships</h1>
