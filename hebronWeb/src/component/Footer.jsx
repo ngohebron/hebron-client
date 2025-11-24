@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+   const navigate = useNavigate();
   return (
     <div>
       {/* Footer */}
@@ -37,7 +39,7 @@ const Footer = () => {
               </span>
               <div>
                 <button
-                  onClick={(e) => e.preventDefault()}
+                  onClick={(e) => navigate('/donationhub')}
                   className="  text-white px-10 py-2 rounded-2xl 
     bg-gradient-to-r from-emerald-700 via-emerald-950 to-emerald-700
     hover:from-emerald-600 hover:via-emerald-950 hover:to-emerald-600
@@ -52,21 +54,24 @@ const Footer = () => {
 
           <div>
             <div className="flex flex-wrap gap-4 mb-4 text-emerald-900">
-              <a href="#!" className=" hover:text-emerald-700 underline">
+              <Link className=" hover:text-emerald-700 underline"
+              to='/aboutus'>
                 About Us
-              </a>
-              <a href="#!" className="hover:text-emerald-600 underline">
+              </Link>
+              <Link className="hover:text-emerald-600 underline"
+                  to='/ourwork'>
                 What We Do
-              </a>
-              <a href="#!" className="hover:text-emerald-600 underline">
+              </Link>
+              <Link className="hover:text-emerald-600 underline"
+                  to='/donationhub'>
                 Donate for a Cause
-              </a>
-              <a href="#!" className="hover:text-emerald-600 underline">
+              </Link>
+              <Link className="hover:text-emerald-600 underline">
                 Event Gallery
-              </a>
-              <a href="#!" className="hover:text-emerald-600 underline">
+              </Link>
+              <Link className="hover:text-emerald-600 underline">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
 
