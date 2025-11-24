@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
       {/* Footer */}
@@ -27,9 +27,12 @@ const Footer = () => {
               </p>
               <p className="text-gray-700">
                 Email:{" "}
-                <span className="text-emerald-800">
-                  info@hebronfoundation@gmail.com
-                </span>
+                <a
+                  href="mailto:hebronfoundation@gmail.com"
+                  className="text-emerald-800 underline cursor-pointer"
+                >
+                  hebronfoundation@gmail.com
+                </a>
               </p>
             </div>
 
@@ -39,7 +42,7 @@ const Footer = () => {
               </span>
               <div>
                 <button
-                  onClick={(e) => navigate('/donationhub')}
+                  onClick={(e) => navigate("/donationhub")}
                   className="  text-white px-10 py-2 rounded-2xl 
     bg-gradient-to-r from-emerald-700 via-emerald-950 to-emerald-700
     hover:from-emerald-600 hover:via-emerald-950 hover:to-emerald-600
@@ -54,16 +57,16 @@ const Footer = () => {
 
           <div>
             <div className="flex flex-wrap gap-4 mb-4 text-emerald-900">
-              <Link className=" hover:text-emerald-700 underline"
-              to='/aboutus'>
+              <Link className=" hover:text-emerald-700 underline" to="/aboutus">
                 About Us
               </Link>
-              <Link className="hover:text-emerald-600 underline"
-                  to='/ourwork'>
+              <Link className="hover:text-emerald-600 underline" to="/ourwork">
                 What We Do
               </Link>
-              <Link className="hover:text-emerald-600 underline"
-                  to='/donationhub'>
+              <Link
+                className="hover:text-emerald-600 underline"
+                to="/donationhub"
+              >
                 Donate for a Cause
               </Link>
               <Link className="hover:text-emerald-600 underline">
@@ -100,7 +103,7 @@ const Footer = () => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
