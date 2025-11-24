@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
+import { FiChevronDown } from "react-icons/fi";
 
 const campaignsData = [
   {
@@ -171,7 +172,7 @@ export default function DonationHub() {
                     <button
                       key={campaign.id}
                       onClick={() => setActiveTab(campaign.id)}
-                      className={`pb-3 font-semibold transition ${
+                      className={`pb-3 font-semibold transition cursor-pointer ${
                         activeTab === campaign.id
                           ? "border-b-2 border-customGreen text-customGreen"
                           : "text-gray-600 hover:text-gray-900"
@@ -338,56 +339,60 @@ export default function DonationHub() {
           </div>
         </div>
       </section>
-   <section className="relative -mt-20 px-6 pb-16">
-  <div className="max-w-6xl mx-auto bg-[#43846D] rounded-2xl shadow-lg p-8 md:p-12">
+      <section className="relative -mt-20 px-6 pb-16">
+        <div className="max-w-6xl mx-auto bg-[#43846D] rounded-2xl shadow-lg p-8 md:p-12">
+          {/* Center section wrapper */}
+          <div className="w-full flex justify-center">
+            <div className="max-w-xl w-full">
+              {/* FAQ Title */}
+              <h1 className="text-white text-3xl font-bold mb-4">
+                Frequently Asked Questions
+              </h1>
 
-    {/* Center section wrapper */}
-    <div className="w-full flex justify-center">
-      <div className="max-w-xl w-full">
-
-        {/* FAQ Title */}
-        <h1 className="text-white text-3xl font-bold mb-4">
-          Frequently Asked Questions
-        </h1>
-
-        {/* FAQ Box */}
-        <div className="bg-[#7AA79733] bg-opacity-70 rounded-xl p-8 shadow-lg">
-          {faqs.map((faq, idx) => (
-            <div key={idx} className="mb-6">
-              <button
-                className="w-full text-left text-lg text-white"
-                onClick={() => toggleOpen(idx)}
-              >
-                {faq.question}
-                <span className="float-right">
+              {/* FAQ Box */}
+              <div className="bg-[#7AA79733] bg-opacity-70 rounded-xl p-8 shadow-lg">
+                {faqs.map((faq, idx) => (
+                  <div key={idx} className="mb-6">
+                    <button
+                      className="w-full text-left text-lg text-white cursor-pointer"
+                      onClick={() => toggleOpen(idx)}
+                    >
+                      {faq.question}
+                      {/* <span className="float-right">
                   {faq.answer ? (openIds.includes(idx) ? "−" : "+") : "+"}
-                </span>
-              </button>
+                </span> */}
+                      <span className="float-right">
+                        <FiChevronDown
+                          className={`text-xl transition-transform ${
+                            openIds.includes(idx) ? "rotate-180" : ""
+                          }`}
+                        />
+                      </span>
+                    </button>
 
-              {/* Smooth Animation */}
-              <div
-                className={`transition-all duration-300 overflow-hidden ${
-                  openIds.includes(idx)
-                    ? "max-h-40 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="mt-2 text-white text-[16px] pl-2">
-                  {faq.answer}
-                </p>
+                    {/* Smooth Animation */}
+                    <div
+                      className={`transition-all duration-300 overflow-hidden ${
+                        openIds.includes(idx)
+                          ? "max-h-40 opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <p className="mt-2 text-white text-[16px] pl-2">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-      </div>
-    </div>
-
-    {/* Contact Box - aligned with FAQ box */}
-    <div className="w-full flex justify-center mt-6">
-      <div className="max-w-xl w-full">
-        <div
-          className="
+          {/* Contact Box - aligned with FAQ box */}
+          <div className="w-full flex justify-center mt-6">
+            <div className="max-w-xl w-full">
+              <div
+                className="
             w-full
             rounded-[9px]
             border-2
@@ -395,29 +400,30 @@ export default function DonationHub() {
             p-6
             bg-gradient-to-r from-[#43846D] via-[#234639] to-[#43846D]
           "
-        >
-          <h1 className="text-white text-sm mb-2">
-            For any further queries reach out to
-          </h1>
+              >
+                <h1 className="text-white text-sm mb-2">
+                  For any further queries reach out to
+                </h1>
+                <p className="text-white text-sm">
+                  Email:{" "}
+                  <a
+                    href="mailto:hebronfoundation@gmail.com"
+                    className="underline cursor-pointer"
+                  >
+                    hebronfoundation@gmail.com
+                  </a>
+                </p>
 
-          <p className="text-white text-sm">
-            Email : info@hebronfoundation.com
-          </p>
-
-          <p className="text-white text-sm mt-1">
-            Contact: 8793235622
-          </p>
+                <p className="text-white text-sm mt-1">Contact: 8793235622</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <div className="py-16 px-6 bg-[#F9F9EE] rounded-4xl mt-16">
+        <Footer />
       </div>
-    </div>
-
-  </div>
-</section>
-
-<div className="py-16 px-6 bg-[#F9F9EE] rounded-4xl mt-16">
-    <Footer/>
-</div>
-
     </MainLayout>
   );
 }

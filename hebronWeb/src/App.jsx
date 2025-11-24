@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs'
 import Ourwork from './pages/Ourwork'
 import Campaign_page from './pages/Campaign_page'
 import DonationHub from './pages/donationHub'
+import ScrollToTop from './component/ScrollToTop'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <ReactLenis
       root options={
         {
