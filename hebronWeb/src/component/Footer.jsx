@@ -13,7 +13,7 @@ const Footer = () => {
                   Hebron <br /> Foundation
                 </h2>
               </div>
-              <div class="w-2/4 h-[4px] bg-gradient-to-r from-emerald-700 to-emerald-900 mb-2"></div>
+              <div className="w-2/4 h-[4px] bg-gradient-to-r from-emerald-700 to-emerald-900 mb-2"></div>
 
               <p className="text-gray-700">
                 H.No. B 23, Limbore Plot , Near Arun Cinema Theater, Dapodi,
