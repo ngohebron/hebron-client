@@ -5,9 +5,9 @@ import ReactLenis from 'lenis/react'
 import AboutUs from './pages/AboutUs'
 import Ourwork from './pages/Ourwork'
 import Campaign_page from './pages/Campaign_page'
-import DonationHub from './pages/DonationHub'
-import DonationFood from './pages/DonationFood'
+import DonationFood from './pages/donationFood'
 import ScrollToTop from './component/ScrollToTop'
+import DonationHub from './pages/donationHub'
 
 
 function App() {

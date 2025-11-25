@@ -103,15 +103,7 @@ export const images = [
   "/aboutus/p5.jpg"
 ];
 
-export const teamMembers = [
-  { name: "Mr. Samson Kale", role: "Founder", image: "/aboutus/founder.png" },
-  { name: "Mr. Sandesh Kale", role: "Vice President", image: "/aboutus/founder.png" },
-  { name: "Mrs. Varsha Kale", role: "Treasurer", image: "/aboutus/founder.png" },
-  { name: "Ms. Tejal Bansode", role: "Secretary", image: "/aboutus/founder.png" },
-  { name: "Adv. Akash Dalvi", role: "Legal Advisor", image: "/aboutus/founder.png" },
-  { name: "Mr. Kamlakar Sakat", role: "Member", image: "/aboutus/founder.png" },
-  { name: "Mrs. Sulochana Patole", role: "Member", image: "/aboutus/founder.png" },
-];
+
 
 export const causes = [
   {
