@@ -5,7 +5,8 @@ import ReactLenis from 'lenis/react'
 import AboutUs from './pages/AboutUs'
 import Ourwork from './pages/Ourwork'
 import Campaign_page from './pages/Campaign_page'
-import DonationHub from './pages/donationHub'
+import DonationHub from './pages/DonationHub'
+import DonationFood from './pages/DonationFood'
 import ScrollToTop from './component/ScrollToTop'
 
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/ourwork" element={<Ourwork/>} />
             <Route path="/campaign" element={<Campaign_page/>} />
             <Route path="/donationhub" element={<DonationHub/>} />
+             <Route path="/donationfood" element={<DonationFood/>} />
         </Routes>
       </ReactLenis>
     </Router>

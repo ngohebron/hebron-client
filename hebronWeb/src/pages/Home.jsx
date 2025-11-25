@@ -153,7 +153,7 @@ const Home = () => {
 
         {/* Content */}
         <div className="relative text-white py-10 px-2 grid grid-cols-1 md:grid-cols-1 md:gap-8 gap-2">
-          <div class="text-center">
+          <div className="text-center">
             <h2 className="text-2xl font-bold text-emerald-300">35%</h2>
             <p className="text-sm mt-1">
               of children under 5 in rural India are stunted due to chronic

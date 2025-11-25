@@ -95,14 +95,58 @@ export const stories = [
   },
 ];
 
- export const images = [
-    "/aboutus/p1.jpg",
-    "/aboutus/p2.jpg",
-    "/aboutus/p3.jpg",
-    "/aboutus/p4.jpg",
-    "/aboutus/p5.jpg"
-  ];
+export const images = [
+  "/aboutus/p1.jpg",
+  "/aboutus/p2.jpg",
+  "/aboutus/p3.jpg",
+  "/aboutus/p4.jpg",
+  "/aboutus/p5.jpg"
+];
 
+export const teamMembers = [
+  { name: "Mr. Samson Kale", role: "Founder", image: "/aboutus/founder.png" },
+  { name: "Mr. Sandesh Kale", role: "Vice President", image: "/aboutus/founder.png" },
+  { name: "Mrs. Varsha Kale", role: "Treasurer", image: "/aboutus/founder.png" },
+  { name: "Ms. Tejal Bansode", role: "Secretary", image: "/aboutus/founder.png" },
+  { name: "Adv. Akash Dalvi", role: "Legal Advisor", image: "/aboutus/founder.png" },
+  { name: "Mr. Kamlakar Sakat", role: "Member", image: "/aboutus/founder.png" },
+  { name: "Mrs. Sulochana Patole", role: "Member", image: "/aboutus/founder.png" },
+];
+
+export const causes = [
+  {
+    title: "Provide Nutritious Meal To Hungry Children",
+    raised: 65000,
+    goal: 100000,
+  },
+  {
+    title: "Empower Youth Through Education",
+    raised: 75000,
+    goal: 100000,
+  },
+  {
+    title: "Give Warmth And Dignity To Those In Need",
+    raised: 80000,
+    goal: 100000,
+  },
+  {
+    title: "Help Every Child Grow, Learn, And Thrive",
+    raised: 50000,
+    goal: 100000,
+  },
+];
+
+ export const eventImages = [
+  "/donationFood/p1.jpg",
+  "/donationFood/p2.jpg",
+  "/donationFood/p3.jpg",
+  "/donationFood/p4.jpg",
+  "/donationFood/p5.jpg",
+   "/donationFood/p6.jpg",
+  "/donationFood/p7.jpg",
+  "/donationFood/p8.jpg",
+  "/donationFood/p9.jpg",
+];
  export const teamMembers = [
   { name: "Mr. Samson Kale", role: "Founder" , image:"/aboutus/founder.png"},
   { name: "Mr. Sandesh Kale", role: "Vice President"  , image:"/aboutus/founder.png"},
