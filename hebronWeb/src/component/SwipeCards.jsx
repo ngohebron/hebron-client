@@ -4,27 +4,10 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const SwipeCards = () => {
-    const testimonials = [
-  {
-    image: "/aboutus/p1.jpg", 
-    title: "When you're hungry, even kindness tastes like food.",
-    text: `Shashi, a single mother from Nashik, shared that the daily lunch packets from Hebron helped her save enough money to send her children back to school.`,
-    author: "Shashi",
-  },
-  {
-    image: "/aboutus/p1.jpg",
-    title: "Every meal restores dignity.",
-    text: "Your support helped Anaya get back on her feet and rebuild her life through hope and nourishment.",
-    author: "Anaya",
-  },
-  {
-    image: "/aboutus/p1.jpg",
-    title: "Food is more than hunger — it's hope.",
-    text: "Daily meals helped Rohan stay healthy and focus on finding work again.",
-    author: "Rohan",
-  },
-];
+const SwipeCards = ({data}) => {
+  console.log("SwipeCards Data:", data);
+
+
   return (
      <div className="relative w-full md:w-1/2 px-10 md:px-12 mx-auto">
   <Swiper
@@ -38,7 +21,7 @@ const SwipeCards = () => {
     slidesPerView={1}
     className="rounded-xl md:rounded-2xl"
   >
-    {testimonials.map((item, index) => (
+    {data.map((item, index) => (
       <SwiperSlide key={index}>
         <div className="flex flex-col md:flex-row h-auto md:h-80 bg-[#F7F7EF] rounded-xl md:rounded-2xl overflow-hidden shadow-md">
           {/* Image */}

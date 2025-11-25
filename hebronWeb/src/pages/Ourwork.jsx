@@ -2,6 +2,7 @@ import React from "react";
 import MainLayout from "../layout/MainLayout";
 import { useNavigate } from "react-router-dom";
 import Footer from "../component/Footer";
+import { campaigns_data } from "../constants/data";
 
 function Ourwork() {
      const navigate = useNavigate();
@@ -122,25 +123,25 @@ function Ourwork() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {campaignsitems.map((item) => (
+            {campaigns_data.map((item) => (
               <div
-                key={item.id}
-                onClick={() => {navigate('/campaign')}}
+                key={item.item_id}
+                onClick={() => {navigate('/campaign', { state: { data: item } })}}
                 className="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer 
                            hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <img
-                  src={item.image}
-                  alt={item.title}
+                  src={item?.card?.image}
+                  alt={item?.card?.title}
                   className="w-full h-48 object-cover"
                 />
 
                 <div className="p-4">
                   <h3 className="text-[#234639] font-manrope font-semibold">
-                    {item.title}
+                    {item?.card?.title}
                   </h3>
                   <h2 className="text-sm text-[#43846D] mt-2">Our Goal</h2>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
+                  <p className="text-sm text-gray-600">{item?.card?.desc}</p>
                 </div>
               </div>
             ))}

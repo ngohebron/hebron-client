@@ -3,11 +3,12 @@ import MainLayout from "../layout/MainLayout";
 import { FiChevronDown } from "react-icons/fi";
 import { faqs, stories } from "../constants/data";
 import Footer from "../component/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [active, setActive] = useState(0);
   const [openIndex, setOpenIndex] = useState(null);
-
+ const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -47,7 +48,7 @@ const Home = () => {
             </div>
 
             <button
-              onClick={(e) => e.preventDefault()}
+              onClick={() => navigate('aboutus')}
               className="bg-white text-emerald-900 hover:bg-emerald-900 hover:text-gray-200 transition px-4 py-2 w-fit rounded-3xl font-medium shadow-xl cursor-pointer"
             >
               Learn more
@@ -75,7 +76,7 @@ const Home = () => {
             </div>
 
             <button
-              onClick={(e) => e.preventDefault()}
+              onClick={() => navigate('aboutus')}
               className="bg-customGreen text-gray-200  px-3 py-2 w-fit rounded-3xl font-medium shadow-xl cursor-pointer"
             >
               Learn more
@@ -126,7 +127,7 @@ const Home = () => {
 
           <div className="w-full flex py-5 items-center justify-center m">
             <button
-              onClick={(e) => e.preventDefault()}
+              onClick={() => navigate('ourwork')}
               className="bg-gray-200 text-gray-800  px-3 py-2 w-fit rounded-3xl  font-medium shadow-xs  cursor-pointer"
             >
               Learn more
