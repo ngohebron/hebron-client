@@ -1,5 +1,24 @@
 // src/constants/data.js
 
+export const ADDRESS = {
+  line1: " H.No. B 23, Limbore Plot , Near Arun Cinema Theater, Dapodi,",
+  city: "Pune",
+  state: "Maharashtra",
+  pincode: "411012",
+  coordinates: {
+    lat: 18.58132419136752,
+    lng: 73.83265527887657
+  }
+};
+
+export const NGO_Details = {
+  name: "Hebron Foundation",
+  contactNumber: "8793235622",
+  email: "info@hebronfoundation.org"
+};
+
+
+
 export const navLinks = [
   { label: "Home", path: "/" },
   { label: "About Us", path: "/aboutus" },

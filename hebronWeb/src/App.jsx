@@ -8,6 +8,7 @@ import Campaign_page from './pages/Campaign_page'
 import DonationFood from './pages/donationFood'
 import ScrollToTop from './component/ScrollToTop'
 import DonationHub from './pages/donationHub'
+import GetInvolved from './pages/GetInvolved'
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/campaign" element={<Campaign_page/>} />
             <Route path="/donationhub" element={<DonationHub/>} />
              <Route path="/donationfood" element={<DonationFood/>} />
+             <Route path="/getinvolved" element={<GetInvolved/>} />
         </Routes>
       </ReactLenis>
     </Router>

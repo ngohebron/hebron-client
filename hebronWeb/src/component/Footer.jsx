@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ADDRESS } from "../constants/data";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -18,9 +19,11 @@ const Footer = () => {
               <div className="w-2/4 h-[4px] bg-gradient-to-r from-emerald-700 to-emerald-900 mb-2"></div>
 
               <p className="text-gray-700">
-                H.No. B 23, Limbore Plot , Near Arun Cinema Theater, Dapodi,
+                {/* H.No. B 23, Limbore Plot , Near Arun Cinema Theater, Dapodi, */}
+                {ADDRESS.line1}
                 <br />
-                Pune - 411012, Maharashtra
+                {/* Pune - 411012, Maharashtra */}
+                {ADDRESS.city} - {ADDRESS.pincode}, {ADDRESS.state}
               </p>
               <p className="text-gray-700 mt-4">
                 Contact us: <span className="text-emerald-800">8793235622</span>
