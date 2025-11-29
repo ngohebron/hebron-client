@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
 import { FiChevronDown } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const campaignsData = [
   {
@@ -126,6 +127,7 @@ const faqs = [
 ];
 
 export default function DonationHub() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("tab1");
   const [openIds, setOpenIds] = useState(
     faqs.reduce((acc, faq, idx) => {
@@ -201,6 +203,7 @@ export default function DonationHub() {
                     (campaign) =>
                       activeTab === campaign.id && (
                         <button
+                        onClick={()=>navigate("/donationfood")}
                           key={campaign.id}
                           className="bg-[#234639] text-sm text-white hover:bg-emerald-900 hover:text-gray-200 transition px-4 py-2 w-fit rounded-3xl font-medium shadow-xl cursor-pointer"
                         >

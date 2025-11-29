@@ -333,19 +333,19 @@ export const campaigns_data = [
     bottom_image: "/ourwork/image1.jpg",
     scrolleble_section: [
       {
-        image: "scroll41.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Blood Camp",
         description: "Hundreds participated in our blood donation event.",
         author: "Ravi"
       },
       {
-        image: "scroll42.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Free Checkup",
         description: "Doctors conducting free medical checkups.",
         author: "Dr. Shalini"
       },
       {
-        image: "scroll43.jpg",
+        image: "/ourwork/image1.jpg",
         title: "Medicine Distribution",
         description: "People receiving free medicines.",
         author: "Gopal"

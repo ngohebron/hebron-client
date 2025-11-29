@@ -2,12 +2,12 @@ import React, { use, useEffect, useRef, useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
 import SwipeCards from "../component/SwipeCards";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Campaign_page() {
 
   const location = useLocation();
-
+  const navigate = useNavigate(); 
   const item = location.state?.data;
   const [campaignData, setCampaignData] = useState(item || null);
 
@@ -152,8 +152,9 @@ function Campaign_page() {
             <p className="text-lg   text-customGreen">
                 {campaignData?.bottom_description}
             </p>
-            <button className="mt-5 border-emerald-900 w-fit border-2 p-1 px-2 rounded-2xl text-emerald-900 font-medium hover:cursor-pointer hover:text-emerald-700">
-              Know how you can contribute
+            <button className="mt-5 border-emerald-900 w-fit border-2 p-1 px-2 rounded-2xl text-emerald-900 font-medium hover:cursor-pointer hover:text-emerald-700"
+            onClick={(e) => navigate("/getinvolved")}>
+              Know how you can contribute ? <span className="underline">Get Involved</span>
             </button>
           </div>
         </div>
@@ -211,7 +212,7 @@ function Campaign_page() {
         </div>
         <div className="flex gap-5 items-center">
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => navigate("/donationhub")}
             className="  text-white px-5 py-2 rounded-2xl 
     bg-emerald-900
     hover:from-emerald-600 hover:via-emerald-950 hover:to-emerald-600
@@ -219,7 +220,8 @@ function Campaign_page() {
           >
             Support a Cause
           </button>
-          <p className="underline font-bold cursor-pointer text-gray-700">
+          <p className="underline font-bold cursor-pointer text-gray-700"
+          onClick={()=>navigate("/getinvolved")}>
             Get Involved
           </p>
         </div>

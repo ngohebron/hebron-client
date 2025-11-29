@@ -3,8 +3,10 @@ import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
 import FlipCard from "../component/FlipCard";
 import SlidingImage from "../component/SlidingImage";
+import { useNavigate } from "react-router-dom";
 
 const DonationFood = () => {
+  const navigate = useNavigate();
   const [donationAmount, setDonationAmount] = useState("");
   const [donationType, setDonationType] = useState("One Time");
   const [formData, setFormData] = useState({
@@ -255,7 +257,8 @@ const DonationFood = () => {
             Your support can turn compassion into action. Join us in making
             lives brighter — one step, one meal, one child at a time.
           </p>
-          <button className="bg-white  px-4 py-2 rounded-4xl font-semibold text-md hover:bg-gray-100 transition-colors duration-200 cursor-pointer mb-2" style={{ color: "#484848" }}>
+          <button className="bg-white  px-4 py-2 rounded-4xl font-semibold text-md hover:bg-gray-100 transition-colors duration-200 cursor-pointer mb-2" style={{ color: "#484848" }}
+          onClick={()=>navigate("/getinvolved")}>
             Get Involved
           </button>
           <div className="text-md">
