@@ -13,7 +13,7 @@ const AdminLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "admin@gmail.com" && password === "admin") {
-      navigate("/dashboard");
+      navigate("/adminDashboard");
     } else {
       setError("Invalid email or password");
     }
