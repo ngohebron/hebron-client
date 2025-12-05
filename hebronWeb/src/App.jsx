@@ -9,6 +9,12 @@ import DonationFood from './pages/donationFood'
 import ScrollToTop from './component/ScrollToTop'
 import DonationHub from './pages/donationHub'
 import GetInvolved from './pages/GetInvolved'
+import EventGallery from './pages/EventGallery'
+import AdminLogin from './pages/AdminLogin'
+import AdminDashboard from './pages/AdminDashboard'
+import CreateEvents from './pages/CreateEvents'
+import Transactions from './pages/Transactions'
+import UpdateEvents from './pages/UpdateEvents'
 
 
 function App() {
@@ -39,6 +45,13 @@ function App() {
             <Route path="/donationhub" element={<DonationHub/>} />
              <Route path="/donationfood" element={<DonationFood/>} />
              <Route path="/getinvolved" element={<GetInvolved/>} />
+             <Route path="/eventgallery" element={<EventGallery/>} />
+             <Route path="/adminlogin" element={<AdminLogin/>} />
+             <Route path="/adminDashboard" element={<AdminDashboard/>} />
+             <Route path="/createEvent" element={<CreateEvents/>} />
+              <Route path="/adminTransaction" element={<Transactions/>} />
+              <Route path="/adminUpdateEvents" element={<UpdateEvents/>} />
+
         </Routes>
       </ReactLenis>
     </Router>

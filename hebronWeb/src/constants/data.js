@@ -24,7 +24,15 @@ export const navLinks = [
   { label: "About Us", path: "/aboutus" },
   { label: "Our Work", path: "/ourwork" },
   { label: "Get Involved", path: "/getinvolved" },
-  { label: "Gallery", path: "/gallery" },
+  { label: "Gallery", path: "/eventgallery" },
+];
+
+
+export const adminNavLinks = [
+  { label: "Dashboard", path: "/adminDashboard" },
+  { label: "Events", path: "/createEvent" },
+  { label: "Tranactions", path: "/adminTransaction" },
+  { label: "Update Events", path: "/adminUpdateEvents" },
 ];
 
 
