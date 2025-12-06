@@ -1,6 +1,7 @@
 // components/CreateEvents.jsx
 import React, { useState } from "react";
 import AdminMainLayout from "../../layout/AdminMainLayout";
+import { uploadToCloudinary } from "../../utils/cloudinaryApi";
 
 const CreateEvents = () => {
   const [formData, setFormData] = useState({
@@ -39,26 +40,68 @@ const CreateEvents = () => {
     setShowMediaDialog(false);
   };
 
-  const handleMediaSubmit = (e) => {
-    e.preventDefault();
-    // you can do validation or anything here
+
+   
+
+const handleMediaSubmit = async () => {
+  if (!formData.imageFiles || formData.imageFiles.length === 0) {
+    alert("Please select images");
+    return;
+  }
+
+  try {
+    console.log("Uploading images...");
+
+    // Upload all images to Cloudinary
+    const uploadedImages = await Promise.all(
+      formData.imageFiles.map((file) => uploadToCloudinary(file))
+    );
+
+    console.log("Uploaded Images:", uploadedImages);
+
+    // Save uploaded image URLs into formData
+    const updatedForm = {
+      ...formData,
+      images: uploadedImages,
+    };
+
+    setFormData(updatedForm);
+
+    // Close image modal
     setShowMediaDialog(false);
+
+    // 🔥 CALL handleSubmit AFTER UPLOAD SUCCESS
+    handleSubmit(updatedForm);
+
+  } catch (error) {
+    console.error(error);
+    alert("Image upload failed!");
+  }
+};
+
+
+
+
+
+const handleSubmit = async (finalEventData) => {
+  const payload = {
+    title: finalEventData.title,
+    description: finalEventData.description,
+    output: finalEventData.output,
+    caption: finalEventData.caption,
+    images: finalEventData.images,  // [{url, public_id}]
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  console.log("FINAL EVENT PAYLOAD:", payload);
 
-    console.log("Event created:", formData);
-    alert("Event created successfully!");
-    // Reset form
-    setFormData({
-      title: "",
-      description: "",
-      output: "",
-      imageFiles: [],
-      caption: "",
-    });
-  };
+  // TODO: Send to backend
+  // await axios.post("/api/events", payload);
+
+  alert("Event created successfully!");
+};
+
+
+
 
   const initialFormData = {
   title: "",
@@ -211,7 +254,7 @@ const CreateEvents = () => {
                   onClick={() => {
                     // After selecting images + caption, now submit full form
                     handleMediaSubmit();
-                    handleSubmit(new Event("submit")); // or call directly
+                     // or call directly
                   }}
                 >
                   Submit Event
