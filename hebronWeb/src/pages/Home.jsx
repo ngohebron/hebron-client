@@ -11,7 +11,34 @@ const Home = () => {
  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    emailjs
+      .send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        form,
+        "YOUR_PUBLIC_KEY"
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+        setForm({ name: "", email: "", message: "" }); // Clear form
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Failed to send message!");
+      });
   };
+
+    const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+   const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
 
   const toggleFAQ = (index) => {
     setOpenIndex(index === openIndex ? null : index);
@@ -386,6 +413,9 @@ const Home = () => {
                     </label>
                     <input
                       type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
                       placeholder="Enter your name"
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
@@ -397,6 +427,9 @@ const Home = () => {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
                       placeholder="Enter your email address"
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
@@ -408,6 +441,9 @@ const Home = () => {
                     </label>
                     <textarea
                       rows="4"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
                       placeholder="Enter your message for us"
                       className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     ></textarea>
