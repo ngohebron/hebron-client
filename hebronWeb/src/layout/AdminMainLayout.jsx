@@ -3,7 +3,7 @@ import AdminNavigationBar from "../component/AdminNavigationBar";
 
 const AdminMainLayout = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <AdminNavigationBar />
       <div className="px-4 md:px-10 py-5">{children}</div>
     </div>

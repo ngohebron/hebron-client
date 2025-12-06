@@ -7,3 +7,7 @@ export const createDonation = (data) => {
 export const verifyPayment = (data) => {
   return axiosApi.post("/api/donation/verifyDonationPayment", data);
 }
+
+export const getDonations = () => {
+  return axiosApi.get("/api/donation/getAllDonations");
+};
