@@ -1,17 +1,18 @@
 // components/CreateEvents.jsx
 import React, { useState } from "react";
 import AdminMainLayout from "../../layout/AdminMainLayout";
+import { uploadToCloudinary } from "../../utils/cloudinaryApi";
+import { createEvent } from "../../utils/eventHelper";
 
 const CreateEvents = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     output: "",
-    // imageFiles will hold File objects
     imageFiles: [],
     caption: "",
   });
-
+const [loading, setLoading] = useState(false);
   const [showMediaDialog, setShowMediaDialog] = useState(false);
 
   const handleChange = (e) => {
@@ -39,26 +40,78 @@ const CreateEvents = () => {
     setShowMediaDialog(false);
   };
 
-  const handleMediaSubmit = (e) => {
-    e.preventDefault();
-    // you can do validation or anything here
+
+   
+
+const handleMediaSubmit = async () => {
+  if (!formData.imageFiles || formData.imageFiles.length === 0) {
+    alert("Please select images");
+    return;
+  }
+  setLoading(true);
+  setShowMediaDialog(false);
+  try {
+    console.log("Uploading images...");
+
+    // Upload all images to Cloudinary
+    const uploadedImages = await Promise.all(
+      formData.imageFiles.map((file) => uploadToCloudinary(file))
+    );
+
+    console.log("Uploaded Images:", uploadedImages);
+
+    // Save uploaded image URLs into formData
+    const updatedForm = {
+      ...formData,
+      images: uploadedImages,
+    };
+
+    setFormData(updatedForm);
+
+    // Close image modal
     setShowMediaDialog(false);
+
+    // 🔥 CALL handleSubmit AFTER UPLOAD SUCCESS
+    handleSubmit(updatedForm);
+    
+
+  } catch (error) {
+    console.error(error);
+    alert("Image upload failed!");
+  }
+};
+
+
+
+
+
+const handleSubmit = async (finalEventData) => {
+  const payload = {
+    title: finalEventData.title,
+    description: finalEventData.description,
+    output: finalEventData.output,
+    caption: finalEventData.caption,
+    images: finalEventData.images,  // [{url, public_id}]
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log("Event created:", formData);
+  console.log("FINAL EVENT PAYLOAD:", payload);
+  await createEvent(payload).then((res) => {
+    console.log("Event created successfully:", res.data);
     alert("Event created successfully!");
-    // Reset form
-    setFormData({
-      title: "",
-      description: "",
-      output: "",
-      imageFiles: [],
-      caption: "",
-    });
-  };
+    setLoading(false);
+  }).catch((err) => {
+    console.error("Error creating event:", err);
+    setLoading(false);
+    alert("Error creating event. Please try again.");
+  });
+  // TODO: Send to backend
+  // await axios.post("/api/events", payload);
+
+  
+};
+
+
+
 
   const initialFormData = {
   title: "",
@@ -211,7 +264,7 @@ const CreateEvents = () => {
                   onClick={() => {
                     // After selecting images + caption, now submit full form
                     handleMediaSubmit();
-                    handleSubmit(new Event("submit")); // or call directly
+                     // or call directly
                   }}
                 >
                   Submit Event
@@ -221,6 +274,16 @@ const CreateEvents = () => {
           </div>
         </div>
       )}
+
+          {loading && (
+      <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="bg-white px-6 py-4 rounded-lg shadow text-center">
+          <div className="border-4 border-gray-300 border-t-emerald-600 rounded-full w-12 h-12 animate-spin mx-auto"></div>
+          <p className="mt-2 text-gray-700 font-medium">Processing...</p>
+        </div>
+      </div>
+    )}
+
     </AdminMainLayout>
   );
 };
