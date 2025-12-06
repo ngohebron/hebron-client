@@ -1,5 +1,5 @@
 import React from "react";
-import MainLayout from "../layout/MainLayout";
+import MainLayout from "../../layout/MainLayout";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa";
 

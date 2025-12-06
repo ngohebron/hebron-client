@@ -1,7 +1,7 @@
 // components/UpdateEvents.jsx
 import React, { useState } from 'react';
 import { FiEdit2, FiTrash2, FiPlus, FiDownload } from 'react-icons/fi';
-import AdminMainLayout from '../layout/AdminMainLayout';
+import AdminMainLayout from '../../layout/AdminMainLayout';
 import { useNavigate } from 'react-router-dom';
 
 const UpdateEvents = () => {

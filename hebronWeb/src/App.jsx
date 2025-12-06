@@ -10,11 +10,11 @@ import ScrollToTop from './component/ScrollToTop'
 import DonationHub from './pages/donationHub'
 import GetInvolved from './pages/GetInvolved'
 import EventGallery from './pages/EventGallery'
-import AdminLogin from './pages/AdminLogin'
-import AdminDashboard from './pages/AdminDashboard'
-import CreateEvents from './pages/CreateEvents'
-import Transactions from './pages/Transactions'
-import UpdateEvents from './pages/UpdateEvents'
+import AdminLogin from './pages/AdminPages/AdminLogin'
+import AdminDashboard from './pages/AdminPages/AdminDashboard'
+import CreateEvents from './pages/AdminPages/CreateEvents'
+import Transactions from './pages/AdminPages/Transactions'
+import UpdateEvents from './pages/AdminPages/UpdateEvents'
 
 
 function App() {

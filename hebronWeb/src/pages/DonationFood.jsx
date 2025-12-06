@@ -4,6 +4,7 @@ import Footer from "../component/Footer";
 import FlipCard from "../component/FlipCard";
 import SlidingImage from "../component/SlidingImage";
 import { useNavigate } from "react-router-dom";
+import { createDonation } from "../utils/donationApis";
 
 const DonationFood = () => {
   const navigate = useNavigate();
@@ -24,12 +25,70 @@ const DonationFood = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log({ donationAmount, donationType, ...formData });
-    alert("Thank you for your donation!");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!donationAmount) {
+    alert("Please enter donation amount");
+    return;
+  }
+
+  const payload = {
+    full_name: formData.fullName,
+    email: formData.email,
+    phone: formData.phone,
+    amount: Number(donationAmount),
+    currency: "INR",
+    message: "Keep up the good work",
+    payment_gateway: "RAZORPAY",
   };
+
+  try {
+    const res = await createDonation(payload);
+    // alert("Thank you for your donation!");
+     if (res.data.success) {
+      openRazerpay(res.data.data.razorpayOrder);
+     }
+
+    
+  } catch (error) {
+    console.error("API Error:", error);
+    alert("Failed to create donation");
+  }
+};
+
+const openRazerpay = (paymentData) => {
+  try{
+ const { id: order_id, amount, currency } = paymentData;
+       const options = {
+        key: "rzp_test_Rmoi0b2KkcWzh7", // Replace with your Razorpay Key
+        amount: amount, // in paise
+        currency: currency,
+        name: "Helton Foundation",
+        description: "Donation",
+        order_id: order_id,
+        handler: function (response) {
+          console.log("Payment successful:", response);
+          alert("Payment Successful!");
+          // You can call backend to verify payment here
+        },
+        prefill: {
+          name: formData.fullName,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      const rzp = new window.Razorpay(options);
+       rzp.open();
+       } catch (error) {
+        console.error("Razorpay Error:", error);
+        alert("Failed to open payment gateway");
+       }
+}
+
 
   return (
     <MainLayout>
@@ -215,6 +274,7 @@ const DonationFood = () => {
           </div>
 
           <button
+            onClick={handleSubmit}
             type="submit"
             className="w-full bg-emerald-900 text-white py-1 md:py-1 rounded-4xl font-semibold text-md hover:bg-emerald-950 transition-colors duration-200 cursor-pointer"
           >

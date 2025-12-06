@@ -1,6 +1,6 @@
 // pages/AdminDashboard.jsx
 import React, { useState, useEffect } from 'react';
-import AdminMainLayout from '../layout/AdminMainLayout';
+import AdminMainLayout from '../../layout/AdminMainLayout';
 import { FiDollarSign, FiCalendar, FiUsers, FiPackage } from 'react-icons/fi';
 
 

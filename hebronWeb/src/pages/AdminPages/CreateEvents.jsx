@@ -1,6 +1,6 @@
 // components/CreateEvents.jsx
 import React, { useState } from "react";
-import AdminMainLayout from "../layout/AdminMainLayout";
+import AdminMainLayout from "../../layout/AdminMainLayout";
 
 const CreateEvents = () => {
   const [formData, setFormData] = useState({

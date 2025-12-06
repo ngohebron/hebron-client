@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "http://localhost:3000";
 const axiosApi = axios.create({
   baseURL: API_URL,
 });
@@ -55,3 +55,6 @@ export async function apiDELETE(url, config = {}) {
     .then((response) => response)
     .catch((error) => error.response);
 }
+
+
+export default axiosApi;
