@@ -18,8 +18,7 @@ export const uploadToCloudinary = async (file, folder = "heborn/events") => {
     );
 
     return {
-      url: res.data.secure_url,
-      public_id: res.data.public_id,
+      image_url: res.data.secure_url,
     };
   } catch (err) {
     console.error("Cloudinary Error:", err.response?.data || err);

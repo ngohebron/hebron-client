@@ -2,17 +2,17 @@
 import React, { useState } from "react";
 import AdminMainLayout from "../../layout/AdminMainLayout";
 import { uploadToCloudinary } from "../../utils/cloudinaryApi";
+import { createEvent } from "../../utils/eventHelper";
 
 const CreateEvents = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     output: "",
-    // imageFiles will hold File objects
     imageFiles: [],
     caption: "",
   });
-
+const [loading, setLoading] = useState(false);
   const [showMediaDialog, setShowMediaDialog] = useState(false);
 
   const handleChange = (e) => {
@@ -48,7 +48,8 @@ const handleMediaSubmit = async () => {
     alert("Please select images");
     return;
   }
-
+  setLoading(true);
+  setShowMediaDialog(false);
   try {
     console.log("Uploading images...");
 
@@ -72,6 +73,7 @@ const handleMediaSubmit = async () => {
 
     // 🔥 CALL handleSubmit AFTER UPLOAD SUCCESS
     handleSubmit(updatedForm);
+    
 
   } catch (error) {
     console.error(error);
@@ -93,11 +95,19 @@ const handleSubmit = async (finalEventData) => {
   };
 
   console.log("FINAL EVENT PAYLOAD:", payload);
-
+  await createEvent(payload).then((res) => {
+    console.log("Event created successfully:", res.data);
+    alert("Event created successfully!");
+    setLoading(false);
+  }).catch((err) => {
+    console.error("Error creating event:", err);
+    setLoading(false);
+    alert("Error creating event. Please try again.");
+  });
   // TODO: Send to backend
   // await axios.post("/api/events", payload);
 
-  alert("Event created successfully!");
+  
 };
 
 
@@ -264,6 +274,16 @@ const handleSubmit = async (finalEventData) => {
           </div>
         </div>
       )}
+
+          {loading && (
+      <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+        <div className="bg-white px-6 py-4 rounded-lg shadow text-center">
+          <div className="border-4 border-gray-300 border-t-emerald-600 rounded-full w-12 h-12 animate-spin mx-auto"></div>
+          <p className="mt-2 text-gray-700 font-medium">Processing...</p>
+        </div>
+      </div>
+    )}
+
     </AdminMainLayout>
   );
 };
