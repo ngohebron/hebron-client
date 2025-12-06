@@ -1,7 +1,7 @@
 // components/Transactions.jsx
 import React, { useState } from 'react';
 import { FiDownload, FiFilter, FiEye, FiSearch, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import AdminMainLayout from '../layout/AdminMainLayout';
+import AdminMainLayout from '../../layout/AdminMainLayout';
 
 const Transactions = () => {
   const [transactions] = useState([
