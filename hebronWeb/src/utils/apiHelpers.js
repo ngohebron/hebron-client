@@ -10,6 +10,7 @@ axiosApi.defaults.headers.common["Authorization"] = user?.accessToken;
 
 axiosApi.interceptors.response.use(
   (response) => response,
+  
   // error => Promise.reject(error)
   (error) => {
     console.log("error: ", error);

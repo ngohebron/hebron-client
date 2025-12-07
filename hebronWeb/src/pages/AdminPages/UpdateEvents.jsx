@@ -1,17 +1,13 @@
 // components/UpdateEvents.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiEdit2, FiTrash2, FiPlus, FiDownload } from 'react-icons/fi';
 import AdminMainLayout from '../../layout/AdminMainLayout';
 import { useNavigate } from 'react-router-dom';
+import { deleteEvent, getAllEvents } from '../../utils/eventHelper';
 
 const UpdateEvents = () => {
 
-  const [events, setEvents] = useState([
-    { id: 1, name: 'Food Drive 2024', date: '2024-02-01', volunteers: 45, status: 'Upcoming' },
-    { id: 2, name: 'Winter Meal Distribution', date: '2023-12-25', volunteers: 60, status: 'Completed' },
-    { id: 3, name: 'Children Nutrition Camp', date: '2024-01-20', volunteers: 30, status: 'Ongoing' },
-    { id: 4, name: 'Summer Food Festival', date: '2024-06-15', volunteers: 80, status: 'Upcoming' },
-  ]);
+  const [events, setEvents] = useState([]);
 
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -22,15 +18,44 @@ const UpdateEvents = () => {
 
   // Filter events based on search and status
   const filteredEvents = events.filter(event => {
-    const matchesSearch = event.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          event.date.includes(searchTerm);
     const matchesStatus = statusFilter === 'all' || event.status.toLowerCase() === statusFilter;
     return matchesSearch && matchesStatus;
   });
+useEffect(() => {
+  const fetchEvents = async () => {
+    try {
+      const response = await getAllEvents(); // Axios call
+      console.log("Axios Response:", response);
+
+      // Make sure to set the actual array
+      // Axios: response.data -> { status, success, message, data: [...] }
+      if (response?.data?.data) {
+        setEvents(response.data.data); // <- this is the array
+        console.log("Events set:", response.data.data.length);
+      } else {
+        setEvents([]);
+      }
+    } catch (error) {
+      console.error("Error fetching events:", error);
+      setEvents([]);
+    }
+  };
+
+  fetchEvents();
+}, []);
+
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this event?')) {
-      setEvents(events.filter(event => event.id !== id));
+      // setEvents(events.filter(event => event.id !== id));
+      deleteEvent(id).then(() => {
+        // setEvents(events.filter(event => event.event_id !== id));
+      alert("Event deleted successfully");
+      window.location.reload();
+      });
+      console.log("Delete event with id:", id);
     }
   };
 
@@ -55,7 +80,7 @@ const UpdateEvents = () => {
     const csvContent = "data:text/csv;charset=utf-8," 
       + "Event Name,Date,Volunteers,Status\n"
       + events.map(event => 
-          `${event.name},${event.date},${event.volunteers},${event.status}`
+          `${event.title},${event.event_date}`
         ).join("\n");
     
     const encodedUri = encodeURI(csvContent);
@@ -154,27 +179,27 @@ const UpdateEvents = () => {
                 </tr>
               ) : (
                 filteredEvents.map(event => (
-                  <tr key={event.id} className="border-b hover:bg-gray-50">
+                  <tr key={event?.event_id} className="border-b hover:bg-gray-50">
                     <td className="py-3 px-4">
                       <div>
-                        <p className="font-medium">{event.name}</p>
-                        <p className="text-sm text-gray-500 md:hidden">{event.date}</p>
+                        <p className="font-medium">{event.title}</p>
+                        <p className="text-sm text-gray-500 md:hidden">{event?.event_date}</p>
                       </div>
                     </td>
-                    <td className="py-3 px-4 hidden md:table-cell">{event.date}</td>
+                    <td className="py-3 px-4 hidden md:table-cell">{event?.event_date}</td>
                     <td className="py-3 px-4">
                       <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                        {event.volunteers}
+                        {event?.volunteers}
                       </span>
                     </td>
                     <td className="py-3 px-4">
-                      <span className={`px-3 py-1 rounded-full text-xs ${
-                        event.status === 'Upcoming' ? 'bg-blue-100 text-blue-800' :
-                        event.status === 'Ongoing' ? 'bg-green-100 text-green-800' :
+                      {/* <span className={`px-3 py-1 rounded-full text-xs ${
+                        event?.status === 'Upcoming' ? 'bg-blue-100 text-blue-800' :
+                        event?.status === 'Ongoing' ? 'bg-green-100 text-green-800' :
                         'bg-gray-100 text-gray-800'
                       }`}>
-                        {event.status}
-                      </span>
+                        {event?.status}
+                      </span> */}
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex flex-wrap gap-2">
@@ -186,7 +211,7 @@ const UpdateEvents = () => {
                           <span className="hidden sm:inline">Edit</span>
                         </button>
                         <button
-                          onClick={() => handleDelete(event.id)}
+                          onClick={() => handleDelete(event.event_id)}
                           className="flex items-center space-x-1 px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 text-sm"
                         >
                           <FiTrash2 size={14} />
@@ -251,7 +276,7 @@ const UpdateEvents = () => {
                   </label>
                   <input
                     type="text"
-                    defaultValue={selectedEvent.name}
+                    defaultValue={selectedEvent.title}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   />
                 </div>
@@ -261,7 +286,7 @@ const UpdateEvents = () => {
                   </label>
                   <input
                     type="date"
-                    defaultValue={selectedEvent.date}
+                    defaultValue={selectedEvent.event_date}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   />
                 </div>
@@ -289,3 +314,4 @@ const UpdateEvents = () => {
 };
 
 export default UpdateEvents;
+
