@@ -184,7 +184,7 @@ const NavigationBar = () => {
               <div className="flex flex-col items-center gap-3 mt-2">
                 <CiUser size={25} />
                 <button className="bg-customGreen text-white px-3 py-2 rounded-4xl"
-                        onClick={() => navigate('donationhub')}>
+                        onClick={() => navigate('/donationhub')}>
                   Support the cause
                 </button>
               </div>

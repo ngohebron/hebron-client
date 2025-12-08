@@ -14,7 +14,7 @@ const DonationFood = () => {
     fullName: "",
     email: "",
     phone: "",
-    panNumber: "",
+    pancard_no: "",
   });
 
   const handleInputChange = (e) => {
@@ -37,6 +37,7 @@ const DonationFood = () => {
       full_name: formData.fullName,
       email: formData.email,
       phone: formData.phone,
+      pancard_no: formData.pancard_no,
       amount: Number(donationAmount),
       currency: "INR",
       message: "Keep up the good work",
@@ -46,8 +47,10 @@ const DonationFood = () => {
     try {
       const res = await createDonation(payload);
       // alert("Thank you for your donation!");
+    console.log("Donation Response:", res);
       if (res.data.success) {
-        openRazerpay(res.data.data.razorpayOrder);
+
+        openRazerpay(res.data.data.razorpayOrder,res.data.data.donation);
       }
     } catch (error) {
       console.error("API Error:", error);
@@ -75,27 +78,31 @@ const DonationFood = () => {
     }
   };
 
-  const openRazerpay = (paymentData) => {
+  const openRazerpay = (paymentData, donation) => {
+    console.log("Opening Razorpay with data:", paymentData, donation);
     try {
-      const { id: order_id, amount, currency } = paymentData;
+      const { id: payment_order_id, amount, currency,pancard_no,email,full_name,phone } = donation;
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY, // Replace with your Razorpay Key
-        amount: amount, // in paise
+        amount: amount * 100,// in paise
         currency: currency,
         name: "Helton Foundation",
         description: "Donation",
-        order_id: order_id,
+        order_id: payment_order_id,
         handler: function (response) {
           console.log("Payment successful:", response);
           handlePaymentVerification(response);
           //alert("Payment Successful!");
           // You can call backend to verify payment here
         },
-        prefill: {
-          name: formData.fullName,
-          email: formData.email,
-          contact: formData.phone,
-        },
+     prefill: {
+    name: full_name || "",   // donor's name
+    email: email || "",      // donor's email
+    contact: phone || "",                          // leave blank if you don't want mobile to show
+  },
+  notes: {
+    pancard_no: pancard_no || "",
+  },
         theme: {
           color: "#3399cc",
         },
@@ -258,10 +265,10 @@ const DonationFood = () => {
                   </label>
                   <input
                     type="text"
-                    name="panNumber"
+                    name="pancard_no"
                     placeholder="Type here"
                     className="w-full px-3  py-1 md:py-1 border bg-gray-100 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                    value={formData.panNumber}
+                    value={formData.pancard_no}
                     onChange={handleInputChange}
                     required
                   />
