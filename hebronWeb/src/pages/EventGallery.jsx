@@ -75,7 +75,7 @@ const EventGallery = () => {
             {campaigns_data.map((item, idx) => (
               <div key={item.item_id} className="campaign-card grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
                 {/* Left text panel */}
-                <div className="campaign-left text-white p-6 rounded-4xl shadow-md">
+                <div className="campaign-left text-white p-6 rounded-4xl h-full shadow-md">
                   <h3 className="text-lg font-semibold mb-3">{item?.card?.title}</h3>
                   <p className="text-sm leading-6">{item?.card?.desc}</p>
                   <p className="text-sm mt-4 font-semibold">What we achieved: <span className="font-normal">Distributed over 8,000 freshly cooked meals across 6 villages in just 3 days.</span></p>

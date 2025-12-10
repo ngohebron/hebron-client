@@ -44,6 +44,15 @@ const AdminNavigationBar = () => {
     }
   }, [activeIndex, isMobile]);
 
+   const handleLogout = () => {
+    // Clear session storage
+    sessionStorage.removeItem("adminToken");
+    sessionStorage.removeItem("adminTokenExpiry");
+
+    navigate("/");
+  };
+
+
   return (
     <>
       {/* Desktop Version */}
@@ -82,6 +91,14 @@ const AdminNavigationBar = () => {
                 </p>
               ))}
             </div>
+            <div>
+              <button
+                className=" bg-emerald-700 hover:bg-emerald-600 py-1 px-4 rounded-3xl text-gray-50 cursor-pointer"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </nav>
       )}
@@ -119,8 +136,18 @@ const AdminNavigationBar = () => {
                   {item.label}
                 </p>
               ))}
+               <div>
+              <button
+                className=" bg-emerald-700 hover:bg-emerald-600 py-1 px-4 rounded-3xl text-gray-50 cursor-pointer"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
             </div>
+            </div>
+            
           )}
+         
         </>
       )}
     </>

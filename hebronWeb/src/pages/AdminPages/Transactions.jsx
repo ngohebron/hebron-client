@@ -7,6 +7,7 @@ import { FiDownload, FiFilter, FiEye, FiSearch, FiChevronLeft, FiChevronRight } 
 export default function AdminTransaction() {
   const [donations, setDonations] = useState([]);
   const [filtered, setFiltered] = useState([]);
+ const [totalPages, setTotalPages] = useState(1);
 
   // Search + Filters
   const [search, setSearch] = useState("");
@@ -31,17 +32,22 @@ export default function AdminTransaction() {
 
   useEffect(() => {
     fetchDonations();
-  }, []);
+  }, [page]);
 
-  const fetchDonations = async () => {
-    try {
-      const res = await getDonations();
-      setDonations(res.data.data);
-      setFiltered(res.data.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+ const fetchDonations = async () => {
+  try {
+    const res = await getDonations(page);
+
+    console.log(res.data.data);
+
+    setDonations(res.data.data.data);   // paginated donations
+    setFiltered(res.data.data.data);
+    setTotalPages(res.data.data.totalPages); // <- IMPORTANT
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 
  
   useEffect(() => {
@@ -83,13 +89,9 @@ export default function AdminTransaction() {
     setPage(1);
   }, [search, currencyFilter, minAmount, maxAmount, fromDate, toDate]);
 
-  // -----------------------------
-  // PAGINATION
-  // -----------------------------
-  const start = (page - 1) * limit;
-  const paginatedData = filtered.slice(start, start + limit);
-  const totalPages = Math.ceil(filtered.length / limit);
+  
 
+  
 
   const exportToCSV = () => {
   if (filtered.length === 0) {
@@ -280,7 +282,7 @@ export default function AdminTransaction() {
     </thead>
 
     <tbody className="divide-y divide-gray-400">
-      {paginatedData.map((item) => (
+      {donations.map((item) => (
         <tr key={item.donation_id} className="hover:bg-gray-50 transition duration-150">
           
           <td className="p-3 font-semibold text-gray-800">{item.donation_id}</td>
@@ -317,7 +319,7 @@ export default function AdminTransaction() {
     </tbody>
   </table>
 
-  {paginatedData.length === 0 && (
+  {donations.length === 0 && (
     <p className="text-center py-6 text-gray-500 text-sm">No donations found.</p>
   )}
 </div>
@@ -327,19 +329,19 @@ export default function AdminTransaction() {
       <div className="flex justify-center mt-6 gap-2">
         <button
           disabled={page === 1}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50 cursor-pointer"
           onClick={() => setPage(page - 1)}
         >
           Prev
         </button>
 
         <span className="px-4 py-1 bg-white shadow rounded">
-          {page} / {totalPages}
+          {page} 
         </span>
 
         <button
           disabled={page === totalPages}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50 cursor-pointer"
           onClick={() => setPage(page + 1)}
         >
           Next

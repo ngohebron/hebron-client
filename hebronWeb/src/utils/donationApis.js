@@ -8,6 +8,6 @@ export const verifyPayment = (data) => {
   return axiosApi.post("/api/donation/verifyDonationPayment", data);
 }
 
-export const getDonations = () => {
-  return axiosApi.get("/api/donation/getAllDonations");
+export const getDonations = (page = 1) => {
+  return axiosApi.get(`/api/donation/getAllDonations?page=${page}`);
 };
