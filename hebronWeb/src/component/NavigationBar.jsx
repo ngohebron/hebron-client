@@ -134,7 +134,7 @@ const NavigationBar = () => {
         
         <CiUser  size={40} className='cursor-pointer' color='gray-600' onClick={()=> navigate('/adminlogin')}/>
         <button className="bg-customGreen text-white px-2 py-2 rounded-4xl w-full hover:bg-blue-700 transition"
-                onClick={() => navigate('donationhub')}>
+                onClick={() => navigate('/donationhub')}>
           Support the cause
         </button>
       </div>
