@@ -4,30 +4,30 @@ import { FiChevronDown } from "react-icons/fi";
 import { faqs, stories } from "../constants/data";
 import Footer from "../component/Footer";
 import { useNavigate } from "react-router-dom";
+import { SendEmail } from "../utils/adminApis";
 
 const Home = () => {
   const [active, setActive] = useState(0);
   const [openIndex, setOpenIndex] = useState(null);
  const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    emailjs
-      .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(() => {
-        alert("Message sent successfully!");
-        setForm({ name: "", email: "", message: "" }); // Clear form
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Failed to send message!");
-      });
-  };
+  try {
+    const response = await SendEmail(form); // <-- calling your backend API
+
+    if (response.data.success === true) {
+      alert("Message sent successfully!");
+      setForm({ name: "", email: "", message: "" }); // reset form
+    } else {
+      alert("Failed to send message!");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong!");
+  }
+};
+
 
     const [form, setForm] = useState({
     name: "",
