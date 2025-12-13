@@ -44,10 +44,12 @@ const DonationFood = () => {
       currency: "INR",
       message: "Keep up the good work",
       payment_gateway: "RAZORPAY",
+      pancard_no: formData.panNumber,
     };
-
+     console.log("Donation Payload:", payload);
     try {
       const res = await createDonation(payload);
+      console.log("Create Donation Response:", res);
       // alert("Thank you for your donation!");
       if (res.data.success) {
         openRazerpay(res.data.data.razorpayOrder);
@@ -80,7 +82,7 @@ const DonationFood = () => {
 
   const openRazerpay = (paymentData) => {
     try {
-      const { id: order_id, amount, currency } = paymentData;
+      const { id: order_id, amount, currency, notes } = paymentData;
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY, // Replace with your Razorpay Key
         amount: amount, // in paise
@@ -95,10 +97,13 @@ const DonationFood = () => {
           // You can call backend to verify payment here
         },
         prefill: {
-          name: formData.fullName,
-          email: formData.email,
-          contact: formData.phone,
+          name: notes.donor_name,
+          email: notes.donor_email,
+          contact: notes.donor_phone,
         },
+        notes: {
+           pancard_no: notes.pancard_no,
+      },
         theme: {
           color: "#3399cc",
         },
