@@ -3,37 +3,9 @@ import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
 import { FiChevronDown } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { donationHub_fullData } from "../constants/data";
 
-const campaignsData = [
-  {
-    id: "tab1",
-    title: "Food",
-    description:
-      "No one should have to sleep hungry. Yet, for many, a meal is a luxury. At Hebron, we believe a shared meal is more than food — it’s a gesture of friendship and care. When you give, you’re not just filling a plate; you’re restoring hope and dignity to someone’s day.",
-    image: "/donationHub/image1.jpg",
-  },
-  {
-    id: "tab2",
-    title: "Education",
-    description:
-      "We deliver essential healthcare services through medical camps and clinics in remote areas. Our healthcare initiative ensures access to preventive care and treatment for all.",
-    image: "/donationHub/image2.jpg",
-  },
-  {
-    id: "tab3",
-    title: "Clothing",
-    description:
-      "The livelihood program trains individuals with vocational skills to create sustainable income sources. We support microenterprises and self-employment opportunities.",
-    image: "/donationHub/image3.jpg",
-  },
-  {
-    id: "tab4",
-    title: "Child Development",
-    description:
-      "Our environmental conservation efforts include reforestation, clean water projects, and sustainable agriculture practices. We protect ecosystems for future generations.",
-    image: "/donationHub/image4.jpg",
-  },
-];
+
 
 const causes = [
   {
@@ -128,6 +100,7 @@ const faqs = [
 
 export default function DonationHub() {
   const navigate = useNavigate();
+  const donationArray = Object.values(donationHub_fullData);
   const [activeTab, setActiveTab] = useState("tab1");
   const [openIds, setOpenIds] = useState(
     faqs.reduce((acc, faq, idx) => {
@@ -135,6 +108,8 @@ export default function DonationHub() {
       return acc;
     }, [])
   );
+
+  console.log("donation dta-->", donationHub_fullData);
 
   const toggleOpen = (idx) => {
     setOpenIds((prev) =>
@@ -170,7 +145,7 @@ export default function DonationHub() {
               <div className="flex flex-col">
                 {/* Tabs */}
                 <div className="flex gap-4 mb-6 border-b border-gray-200">
-                  {campaignsData.map((campaign) => (
+                  {donationArray.map((campaign) => (
                     <button
                       key={campaign.id}
                       onClick={() => setActiveTab(campaign.id)}
@@ -187,34 +162,25 @@ export default function DonationHub() {
 
                 {/* Tab Content */}
                 <div className="text-gray-700 flex-grow">
-                  {campaignsData.map(
+                  {donationArray.map(
                     (campaign) =>
                       activeTab === campaign.id && (
                         <div key={campaign.id}>
                           <p className="mb-6">{campaign.description}</p>
+                          <button
+                            onClick={() => navigate("/donationfood",{state:{data:campaign}}) }
+                            key={campaign.id}
+                            className="bg-[#234639] text-sm text-white hover:bg-emerald-900 hover:text-gray-200 transition px-4 py-2 w-fit rounded-3xl font-medium shadow-xl cursor-pointer"
+                          >
+                            Support the cause
+                          </button>
                         </div>
-                      )
-                  )}
-                </div>
-
-                {/* Button at Bottom */}
-                <div className="mt-auto">
-                  {campaignsData.map(
-                    (campaign) =>
-                      activeTab === campaign.id && (
-                        <button
-                        onClick={()=>navigate("/donationfood")}
-                          key={campaign.id}
-                          className="bg-[#234639] text-sm text-white hover:bg-emerald-900 hover:text-gray-200 transition px-4 py-2 w-fit rounded-3xl font-medium shadow-xl cursor-pointer"
-                        >
-                          Support the cause
-                        </button>
                       )
                   )}
                 </div>
               </div>
               <div>
-                {campaignsData.map(
+                {donationArray.map(
                   (campaign) =>
                     activeTab === campaign.id && (
                       <div key={campaign.id}>

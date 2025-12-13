@@ -155,25 +155,25 @@ export const causes = [
   },
 ];
 
- export const eventImages = [
+export const eventImages = [
   "/donationFood/p1.jpg",
   "/donationFood/p2.jpg",
   "/donationFood/p3.jpg",
   "/donationFood/p4.jpg",
   "/donationFood/p5.jpg",
-   "/donationFood/p6.jpg",
+  "/donationFood/p6.jpg",
   "/donationFood/p7.jpg",
   "/donationFood/p8.jpg",
   "/donationFood/p9.jpg",
 ];
- export const teamMembers = [
-  { name: "Mr. Samson Kale", role: "Founder" , image:"/aboutus/founder.png"},
-  { name: "Mr. Sandesh Kale", role: "Vice President"  , image:"/aboutus/founder.png"},
-  { name: "Mrs. Varsha Kale", role: "Treasurer" , image:"/aboutus/founder.png" },
-  { name: "Ms. Tejal Bansode", role: "Secretary"  , image:"/aboutus/founder.png"},
-  { name: "Adv. Akash Dalvi", role: "Legal Advisor" , image:"/aboutus/founder.png"},
-  { name: "Mr. Kamlakar Sakat", role: "Member" , image:"/aboutus/founder.png" },
-  { name: "Mrs. Sulochana Patole", role: "Member"  , image:"/aboutus/founder.png"},
+export const teamMembers = [
+  { name: "Mr. Samson Kale", role: "Founder", image: "/aboutus/founder.png" },
+  { name: "Mr. Sandesh Kale", role: "Vice President", image: "/aboutus/founder.png" },
+  { name: "Mrs. Varsha Kale", role: "Treasurer", image: "/aboutus/founder.png" },
+  { name: "Ms. Tejal Bansode", role: "Secretary", image: "/aboutus/founder.png" },
+  { name: "Adv. Akash Dalvi", role: "Legal Advisor", image: "/aboutus/founder.png" },
+  { name: "Mr. Kamlakar Sakat", role: "Member", image: "/aboutus/founder.png" },
+  { name: "Mrs. Sulochana Patole", role: "Member", image: "/aboutus/founder.png" },
 ];
 
 export const campaigns_data = [
@@ -196,9 +196,9 @@ export const campaigns_data = [
     },
     bottom_description: "We provide non-perishable food packages containing essential staples such as rice, lentils, wheat, vegetables, and fruit to families and individuals in need. Our food distribution efforts are designed to not only meet immediate hunger needs but also contribute to long-term health and community well-being.",
     counters: [
-      { title: "Meals served", value: 1500, unit:"Lakh" },
-      { title: "Ration Kits", value: 12000, unit:"Thousand" },
-      { title: "Reach", value: 45, unit:"District" }
+      { title: "Meals served", value: 1500, unit: "Lakh" },
+      { title: "Ration Kits", value: 12000, unit: "Thousand" },
+      { title: "Reach", value: 45, unit: "District" }
     ],
     bottom_image: "/ourwork/image1.jpg",
     scrolleble_section: [
@@ -229,7 +229,7 @@ export const campaigns_data = [
       id: 2,
       image: "/ourwork/image2.jpg",
       title: "Learn to Rise",
-       desc: "To promote educational equality and empower children to build a brighter future.",
+      desc: "To promote educational equality and empower children to build a brighter future.",
     },
     banner_image: "/ourwork/image2.jpg",
     title: "Learn to Rise",
@@ -242,9 +242,9 @@ export const campaigns_data = [
     },
     bottom_description: "We provide complete school kits including bags, books, stationery, and uniforms to children in rural and low-income communities. We collaborate with teachers and social workers to identify children most in need.",
     counters: [
-      { title: "Kits Distributed", value: 50000, unit:"Lakh" },
-      { title: "Schools Supported", value: 2000 , unit:"+ Schools"},
-      { title: "Reach", value: 350 , unit:"+ District" }
+      { title: "Kits Distributed", value: 50000, unit: "Lakh" },
+      { title: "Schools Supported", value: 2000, unit: "+ Schools" },
+      { title: "Reach", value: 350, unit: "+ District" }
     ],
     bottom_image: "/ourwork/image2.jpg",
     scrolleble_section: [
@@ -288,9 +288,9 @@ export const campaigns_data = [
     },
     bottom_description: "Hebron Foundation collects gently used and new clothes through donation drives in schools, housing societies, and offices. These are cleaned, sorted, and distributed according to seasonal needs—blankets and woolens in winter, cottons and uniforms in summer.",
     counters: [
-      { title: "Clothing Items Distributed", value: 3200 , unit:"Thousands" },
-      { title: "Beneficiaries", value: 85 , unit:"Individuals helped" },
-      { title: "Reach", value: 18 , unit:"States" }
+      { title: "Clothing Items Distributed", value: 3200, unit: "Thousands" },
+      { title: "Beneficiaries", value: 85, unit: "Individuals helped" },
+      { title: "Reach", value: 18, unit: "States" }
     ],
     bottom_image: "/ourwork/image1.jpg",
     scrolleble_section: [
@@ -334,9 +334,9 @@ export const campaigns_data = [
     },
     bottom_description: "Hebron Foundation hosts weekly child development workshops that include art, music, games, storytelling, and mental health sessions. Trained volunteers and educators encourage teamwork, empathy, and leadership through fun learning experiences.",
     counters: [
-      { title: "Children Impacted", value: 4500 , unit:"Thousand" },
-      { title: "Partner Organizations", value: 60 , unit:"+ Schools"},
-      { title: "Reach", value: 22 , unit:"Districts"}
+      { title: "Children Impacted", value: 4500, unit: "Thousand" },
+      { title: "Partner Organizations", value: 60, unit: "+ Schools" },
+      { title: "Reach", value: 22, unit: "Districts" }
     ],
     bottom_image: "/ourwork/image1.jpg",
     scrolleble_section: [
@@ -363,3 +363,81 @@ export const campaigns_data = [
 
 
 ]
+
+
+
+//donationFood-page
+
+export const donationHub_fullData = {
+  tab1: {
+    id: "tab1",
+    title: "Food",
+    image: "/donationHub/image1.jpg",
+    description:
+      "No one should have to sleep hungry. Yet, for many, a meal is a luxury. At Hebron, we believe a shared meal is more than food — it’s a gesture of friendship and care. When you give, you’re not just filling a plate; you’re restoring hope and dignity to someone’s day.",
+
+    donationDetails: {
+      title: "Meal of hope",
+      desc1:
+        "‘Meal of Hope’ aims at diminishing the number of people that sleep empty stomach, helpless people that go days without had a proper meal.",
+      desc2:
+        "When you give, you’re not just filling a plate; you’re restoring hope and dignity to someone’s day.",
+      desc3:
+        "Across countless homes, hunger steals more than strength — it takes away hope. At Hebron Foundation, we believe no one should face that emptiness. Your donation helps us serve warm, nourishing meals that bring comfort, restore dignity, and rekindle faith in humanity. Because every meal shared is a reminder that someone cares — and that kindness can fill more than stomachs, it can fill hearts.",
+    },
+  },
+
+  tab2: {
+    id: "tab2",
+    title: "Education",
+    image: "/donationHub/image2.jpg",
+    description:
+      "We deliver essential healthcare services through medical camps and clinics in remote areas. Our healthcare initiative ensures access to preventive care and treatment for all.",
+
+    donationDetails: {
+      title: "Learn to rise",
+      desc1:
+        "‘Learn to Rise’ aims at providing basic access of education to poor and underserved children.",
+      desc2:
+        "Every child deserves a fair start in education. Yet, countless children drop out of school simply because they cannot afford notebooks or uniforms. This inequality traps families in poverty for generations.",
+      desc3:
+        "Education is the most powerful gift — the key to breaking cycles of poverty. Your donation helps provide books, uniforms, and learning materials, giving children a real chance to dream and achieve. Let’s ensure every child’s story begins with hope, not hardship.",
+    },
+  },
+
+  tab3: {
+    id: "tab3",
+    title: "Clothing",
+    image: "/donationHub/image3.jpg",
+    description:
+      "The livelihood program trains individuals with vocational skills to create sustainable income sources. We support microenterprises and self-employment opportunities.",
+
+    donationDetails: {
+      title: "Threads of Dignity",
+      desc1:
+        "‘Threads of Dignity’ aims at providing warmth to needy individuals living on streets and in unlivable conditions.",
+      desc2:
+        "Imagine braving the cold with nothing but torn fabric to protect you. A warm garment can restore confidence and dignity.",
+      desc3:
+        "Your support helps us clothe children, families, and elders. Every garment becomes a symbol of love, respect, and human connection.",
+    },
+  },
+
+  tab4: {
+    id: "tab4",
+    title: "Child Development",
+    image: "/donationHub/image4.jpg",
+    description:
+      "Our environmental conservation efforts include reforestation, clean water projects, and sustainable agriculture practices. We protect ecosystems for future generations.",
+
+    donationDetails: {
+      title: "Bright Minds, Happy Hearts",
+      desc1:
+        "‘Bright Minds, Happy Hearts’ is our contribution to every child’s development.",
+      desc2:
+        "Every child deserves nurturing to grow not just physically but emotionally and mentally.",
+      desc3:
+        "Your contribution builds confident, healthy, emotionally strong children — shaping tomorrow’s compassionate adults.",
+    },
+  },
+};

@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../layout/MainLayout";
 import Footer from "../component/Footer";
 import FlipCard from "../component/FlipCard";
 import SlidingImage from "../component/SlidingImage";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { createDonation, verifyPayment } from "../utils/donationApis";
 
 const DonationFood = () => {
+   const location = useLocation();
   const navigate = useNavigate();
+   const item = location.state?.data;
+    const [donationData, setDonationData] = useState(item || null);
   const [donationAmount, setDonationAmount] = useState("");
   const [donationType, setDonationType] = useState("One Time");
   const [formData, setFormData] = useState({
@@ -108,6 +111,11 @@ const DonationFood = () => {
     }
   };
 
+
+  useEffect(() => {
+    console.log("donationdata--->",item.donationDetails)
+  })
+
   return (
     <MainLayout>
       <section
@@ -136,33 +144,26 @@ const DonationFood = () => {
         <div className="w-full md:w-auto">
           <span></span>
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 md:mb-6 text-center md:text-left">
-            Meal Of Hope
+             {donationData?.donationDetails?.title}
           </h2>
 
           <p className="text-gray-700 font-semibold max-w-4xl text-sm md:text-base text-center md:text-left">
-            <span className="font-semibold">'Meal of Hope' </span>aims at
-            diminishing the number of people that sleep empty stomach, helpless
-            people that go days without had a proper meal.
+           {donationData?.donationDetails?.desc1}
           </p>
 
           <div className="my-4 md:my-6">
             <p className="text-sm md:text-base text-center md:text-left">
-              When you give, you're not just filling a plate; you're restoring
-              hope and dignity to someone's day.
+             {donationData?.donationDetails?.desc2}
             </p>
           </div>
 
-          <div className="max-w-4xl leading-relaxed mb-6 md:mb-10">
-            <p className="text-sm md:text-base text-center md:text-left">
-              Across countless homes, hunger steals more than strength—it takes
-              away hope. At Helton Foundation, we believe no one should face
-              that emptiness.Your donation helps us serve warm, nourishing meals
-              that bring comfort, restore dignity, and rekindle faith in
-              humanity. Because every meal starts is a reminder that someone
-              cares —and that kindness can fill more than stomachs. It can fill
-              hearts.
-            </p>
-          </div>
+         {donationData?.donationDetails?.desc3 && (
+      <div className="max-w-4xl leading-relaxed mb-6 md:mb-10">
+        <p className="text-sm md:text-base text-center md:text-left">
+          {donationData?.donationDetails?.desc3}
+        </p>
+      </div>
+    )}
         </div>
 
         <div className="w-full md:w-auto">
@@ -290,7 +291,6 @@ const DonationFood = () => {
                 </div>
 
                 <button
-                  onClick={handleSubmit}
                   type="submit"
                   className="w-full bg-emerald-900 text-white py-1 md:py-1 rounded-4xl font-semibold text-md hover:bg-emerald-950 transition-colors duration-200 cursor-pointer"
                 >
